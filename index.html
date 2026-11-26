@@ -851,6 +851,9 @@
 
     <div id="area-usuario" class="oculto">
       <span id="nome-conectado"></span>
+      <button class="botao secundario" type="button" data-pagina="senha">
+        Alterar senha
+      </button>
       <button id="botao-sair" class="botao secundario" type="button">
         Sair
       </button>
@@ -1120,6 +1123,7 @@
       document.getElementById("area-usuario").classList.remove("oculto");
 
       limparErroLogin();
+      reiniciarInatividade();
       abrirPagina("chamados");
     }
 
@@ -1193,6 +1197,9 @@
 
         } else if (pagina === "base") {
           await renderBase(numeroCarregamento);
+
+        } else if (pagina === "senha") {
+          renderSenha(numeroCarregamento);
 
         } else if (pagina === "importar") {
           renderImportar(numeroCarregamento);
@@ -4858,6 +4865,129 @@
       }
     });
 
+    /* ==========================================================
+       CONTA: alterar senha e saída automática por inatividade
+       ========================================================== */
+
+    const MINUTOS_INATIVIDADE = 30;
+    let temporizadorInatividade = null;
+
+    function renderSenha(numeroCarregamento) {
+      if (numeroCarregamento !== carregamentoAtual) return;
+
+      conteudo.innerHTML = `
+        <h1>Alterar senha</h1>
+
+        <div class="aviso">
+          Use pelo menos 8 caracteres, misturando letras e números.
+          Não compartilhe sua senha: cada pessoa vê apenas os próprios chamados.
+        </div>
+
+        <form id="form-senha" class="card" autocomplete="on">
+          <input type="email" autocomplete="username"
+                 value="${esc(usuarioAtual.email)}" hidden readonly>
+
+          <div class="campo">
+            <label for="senha-atual">Senha atual *</label>
+            <input id="senha-atual" type="password"
+                   autocomplete="current-password" required>
+          </div>
+
+          <div class="campo">
+            <label for="senha-nova">Nova senha *</label>
+            <input id="senha-nova" type="password" minlength="8"
+                   autocomplete="new-password" required>
+          </div>
+
+          <div class="campo">
+            <label for="senha-confirma">Repita a nova senha *</label>
+            <input id="senha-confirma" type="password" minlength="8"
+                   autocomplete="new-password" required>
+          </div>
+
+          <button class="botao" type="submit">Salvar nova senha</button>
+        </form>`;
+
+      document.getElementById("form-senha").addEventListener("submit", async evento => {
+        evento.preventDefault();
+
+        const atual = document.getElementById("senha-atual").value;
+        const nova = document.getElementById("senha-nova").value;
+        const confirma = document.getElementById("senha-confirma").value;
+
+        if (nova.length < 8 || !/[a-zA-Z]/.test(nova) || !/\d/.test(nova)) {
+          mostrarAlerta("A nova senha precisa ter 8 caracteres ou mais, com letras e números.");
+          return;
+        }
+
+        if (nova !== confirma) {
+          mostrarAlerta("As duas senhas novas não são iguais.");
+          return;
+        }
+
+        if (nova === atual) {
+          mostrarAlerta("A nova senha precisa ser diferente da atual.");
+          return;
+        }
+
+        const botao = evento.currentTarget.querySelector("button");
+        botao.disabled = true;
+        limparAlerta();
+
+        try {
+          // Confere a senha atual antes de trocar.
+          const { error: erroAtual } = await cliente.auth.signInWithPassword({
+            email: usuarioAtual.email,
+            password: atual
+          });
+
+          if (erroAtual) {
+            mostrarAlerta("A senha atual não confere.");
+            return;
+          }
+
+          const { error } = await cliente.auth.updateUser({ password: nova });
+          if (error) throw error;
+
+          if (numeroCarregamento !== carregamentoAtual) return;
+
+          evento.target.reset();
+          mostrarAlerta("Senha alterada com sucesso.", "sucesso");
+        } catch (erro) {
+          console.error("Erro ao alterar senha:", erro);
+          mostrarAlerta(
+            "Não foi possível alterar a senha. " +
+            (/weak|fraca|short/i.test(erro.message || "")
+              ? "Escolha uma senha mais forte."
+              : "Tente novamente.")
+          );
+        } finally {
+          botao.disabled = false;
+        }
+      });
+    }
+
+    // Em computadores compartilhados, encerra a sessão parada.
+    function reiniciarInatividade() {
+      clearTimeout(temporizadorInatividade);
+      if (!usuarioAtual) return;
+
+      temporizadorInatividade = setTimeout(async () => {
+        if (!usuarioAtual) return;
+
+        await cliente.auth.signOut().catch(() => {});
+        mostrarLogin();
+        mostrarErroLogin(
+          `Sua sessão foi encerrada após ${MINUTOS_INATIVIDADE} minutos sem uso. ` +
+          "Entre novamente."
+        );
+      }, MINUTOS_INATIVIDADE * 60 * 1000);
+    }
+
+    ["click", "keydown", "touchstart", "scroll"].forEach(tipo =>
+      document.addEventListener(tipo, reiniciarInatividade, { passive: true })
+    );
+
     async function iniciarAplicacao() {
       if (!window.supabase) {
         mostrarErroLogin(
@@ -4870,6 +5000,14 @@
         SUPABASE_URL,
         SUPABASE_PUBLIC_KEY
       );
+
+      // Sessão encerrada em outra aba ou expirada: volta para o login.
+      cliente.auth.onAuthStateChange(evento => {
+        if (evento === "SIGNED_OUT" && usuarioAtual) {
+          mostrarLogin();
+          mostrarErroLogin("Sua sessão terminou. Entre novamente.");
+        }
+      });
 
       try {
         const { data, error } = await cliente.auth.getSession();
