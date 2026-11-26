@@ -227,6 +227,599 @@
       padding: 0 15px;
     }
 
+    /* ===== Vídeo explicativo ===== */
+    .midia {
+      margin: 14px 0;
+    }
+
+    .midia-titulo {
+      font-size: 13px;
+      color: #627d98;
+      margin: 0 0 6px;
+    }
+
+    .video-box {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .video-box iframe,
+    .video-box video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* ===== Simulação passo a passo ===== */
+    .simulacao {
+      background: linear-gradient(135deg, #eaf4fb, #f7fbff);
+      border: 1px solid #dceaf4;
+      border-radius: 12px;
+      padding: 14px;
+      margin: 14px 0;
+    }
+
+    .sim-cabecalho {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #627d98;
+      margin-bottom: 8px;
+    }
+
+    .sim-palco {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      min-height: 170px;
+    }
+
+    .sim-panda {
+      width: 110px;
+      height: auto;
+      overflow: visible;
+    }
+
+    .sim-quadro {
+      position: relative;
+      background: white;
+      border: 2px solid #1d4e78;
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 4px 0 #dceaf4;
+    }
+
+    .sim-quadro::before {
+      content: "";
+      position: absolute;
+      left: -14px;
+      top: calc(50% - 10px);
+      border-style: solid;
+      border-width: 10px 14px 10px 0;
+      border-color: transparent #1d4e78 transparent transparent;
+    }
+
+    .sim-icone {
+      display: inline-block;
+      font-size: 44px;
+      line-height: 1;
+    }
+
+    .sim-titulo {
+      font-weight: bold;
+      font-size: 17px;
+      color: #102a43;
+      margin: 8px 0 4px;
+    }
+
+    .sim-texto {
+      margin: 0;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+
+    .sim-quadro.entrar {
+      animation: simEntrar 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+    }
+
+    .sim-quadro.entrar .sim-icone {
+      animation: simPulo 0.7s 0.15s both;
+    }
+
+    .sim-quadro.entrar .sim-titulo,
+    .sim-quadro.entrar .sim-texto {
+      animation: simSurgir 0.6s 0.25s both;
+    }
+
+    .sim-corpo {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: simBalanco 2.4s ease-in-out infinite;
+    }
+
+    .sim-braco {
+      transform-box: fill-box;
+      transform-origin: 30% 90%;
+    }
+
+    .simulacao.tocando .sim-braco {
+      animation: simAceno 1.2s ease-in-out infinite;
+    }
+
+    .sim-olho {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: simPiscar 4s infinite;
+    }
+
+    .sim-progresso {
+      height: 6px;
+      background: #dceaf4;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .sim-barra {
+      height: 100%;
+      width: 0;
+      background: #2f855a;
+      transition: width 0.5s ease;
+    }
+
+    .sim-controles {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .sim-pontos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-left: auto;
+    }
+
+    .sim-ponto {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #1d4e78;
+      background: white;
+      padding: 0;
+    }
+
+    .sim-ponto.feito {
+      background: #9fb3c8;
+      border-color: #9fb3c8;
+    }
+
+    .sim-ponto.atual {
+      background: #1d4e78;
+    }
+
+    @keyframes simEntrar {
+      from { opacity: 0; transform: translateX(24px) scale(0.92); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @keyframes simPulo {
+      0%   { transform: scale(0) rotate(-20deg); }
+      60%  { transform: scale(1.25) rotate(8deg); }
+      100% { transform: scale(1) rotate(0); }
+    }
+
+    @keyframes simSurgir {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @keyframes simBalanco {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-4px); }
+    }
+
+    @keyframes simAceno {
+      0%, 100% { transform: rotate(0); }
+      50%      { transform: rotate(-28deg); }
+    }
+
+    @keyframes simPiscar {
+      0%, 92%, 100% { transform: scaleY(1); }
+      95%           { transform: scaleY(0.1); }
+    }
+
+    /* ===== Folha: INSS e IRRF ===== */
+    .folha-resumo {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0 6px;
+    }
+
+    .folha-card {
+      background: white;
+      border: 1px solid #dceaf4;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 13px;
+    }
+
+    .folha-card strong {
+      display: block;
+      font-size: 17px;
+      margin-top: 2px;
+      color: #102a43;
+    }
+
+    .folha-card.desconto strong { color: #b42318; }
+
+    .folha-card.liquido {
+      border: 2px solid #2f855a;
+    }
+
+    .folha-card.liquido strong { color: #2f855a; }
+
+    .folha-tabela {
+      font-size: 13px;
+      margin-top: 8px;
+      background: white;
+    }
+
+    .folha-tabela tr.ativa td {
+      background: #fff5d6;
+    }
+
+    .folha-tabela tfoot td {
+      border-top: 2px solid #bcccdc;
+      font-weight: bold;
+    }
+
+    .folha-uso {
+      height: 6px;
+      width: 90px;
+      background: #e3ecf3;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 3px;
+    }
+
+    .folha-uso span {
+      display: block;
+      height: 100%;
+      background: #1d4e78;
+      transition: width 0.6s ease;
+    }
+
+    @media (max-width: 620px) {
+      .folha-resumo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* ===== Base de conhecimento ===== */
+    .base-titulo {
+      margin-top: 22px;
+    }
+
+    .base-meta {
+      font-size: 13px;
+      color: #627d98;
+      margin: -6px 0 6px;
+    }
+
+    .base-item mark {
+      background: #fff1b8;
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    .base-pendente {
+      border: 1px solid #dceaf4;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      background: #fbfdff;
+    }
+
+    .base-pendente-topo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .base-pendente-topo button {
+      margin-left: auto;
+    }
+
+    .base-pendente details {
+      margin-top: 8px;
+    }
+
+    .base-pendente summary {
+      cursor: pointer;
+      color: #1d4e78;
+      font-weight: bold;
+    }
+
+    .campo-midia {
+      border: 1px dashed #bcccdc;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 0 0 14px;
+    }
+
+    .campo-midia legend {
+      font-weight: bold;
+      padding: 0 6px;
+    }
+
+    .campo-midia small {
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* ===== Calculadora de hora extra ===== */
+    .calc-he {
+      background: linear-gradient(135deg, #effaf2, #f7fbff);
+      border: 1px solid #cfe8d6;
+      border-radius: 12px;
+      padding: 14px;
+      margin: 14px 0;
+    }
+
+    .calc-grade {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 14px;
+    }
+
+    .calc-grade label {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .calc-grade input,
+    .calc-grade select {
+      margin-top: 4px;
+      font-weight: normal;
+    }
+
+    .calc-barras {
+      margin: 16px 0 10px;
+    }
+
+    .calc-subtitulo {
+      font-size: 15px;
+      margin: 14px 0 4px;
+    }
+
+    .calc-dica {
+      font-size: 13px;
+      margin: 0 0 8px;
+    }
+
+    .calc-composicao {
+      margin: 12px 0 6px;
+    }
+
+    .calc-pilha {
+      display: flex;
+      height: 18px;
+      border-radius: 9px;
+      overflow: hidden;
+      background: #e3ecf3;
+    }
+
+    .calc-pilha span {
+      height: 100%;
+      transition: width 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+    }
+
+    .calc-legenda {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .calc-legenda i {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 4px;
+    }
+
+    .calc-soma {
+      flex-basis: 100%;
+    }
+
+    .calc-detalhes {
+      background: white;
+      border: 1px solid #dceaf4;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .calc-detalhes summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #1d4e78;
+    }
+
+    .calc-linha {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr) 100px;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .calc-trilho {
+      height: 22px;
+      background: #e3ecf3;
+      border-radius: 11px;
+      overflow: hidden;
+    }
+
+    .calc-preenchimento {
+      height: 100%;
+      width: 0;
+      border-radius: 11px;
+      transition: width 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+    }
+
+    .calc-normal { background: #9fb3c8; }
+    .calc-util   { background: #1d4e78; }
+    .calc-fds    { background: #2f855a; }
+    .calc-noite  { background: #4c3a8f; }
+
+    .calc-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      align-self: end;
+      font-weight: normal !important;
+    }
+
+    .calc-check input {
+      width: auto;
+      margin: 0;
+    }
+
+    .calc-reflexos {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin: 8px 0 4px;
+    }
+
+    .calc-bloco {
+      background: white;
+      border: 1px solid #dceaf4;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 13px;
+      transition: opacity 0.3s;
+    }
+
+    .calc-bloco strong {
+      display: block;
+      font-size: 17px;
+      color: #102a43;
+      margin-top: 4px;
+    }
+
+    .calc-reflexos.inativo .calc-bloco:not(:first-child) {
+      opacity: 0.45;
+    }
+
+    @media (max-width: 700px) {
+      .calc-reflexos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .calc-valor {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .calc-total {
+      background: white;
+      border: 2px solid #2f855a;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .calc-total strong {
+      font-size: 24px;
+      color: #2f855a;
+    }
+
+    .calc-passos {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    @media (max-width: 520px) {
+      .calc-grade {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-linha {
+        grid-template-columns: 1fr auto;
+      }
+
+      .calc-linha .calc-trilho {
+        grid-column: 1 / -1;
+        grid-row: 2;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .calc-preenchimento {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .sim-palco {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+
+      .sim-quadro {
+        width: 100%;
+      }
+
+      .sim-quadro::before {
+        display: none;
+      }
+
+      .sim-panda {
+        width: 90px;
+      }
+
+      .sim-pontos {
+        margin-left: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .simulacao *,
+      .simulacao *::before {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
     @media (max-width: 700px) {
       .layout {
         display: block;
@@ -309,6 +902,10 @@
         Novo chamado
       </button>
 
+      <button type="button" data-pagina="simuladores">
+        Simuladores
+      </button>
+
       <button
         type="button"
         data-pagina="fila"
@@ -329,19 +926,30 @@
 
       <button
         type="button"
+        data-pagina="base"
+        id="menu-base"
+        class="oculto"
+      >
+        Base de conhecimento
+      </button>
+
+      <button
+        type="button"
         data-pagina="orientacoes"
         id="menu-orientacoes"
         class="oculto"
       >
         Gerenciar orientações
-<button
-  type="button"
-  data-pagina="analise"
-  id="menu-analise"
-  class="oculto"
->
-  Análise e Qualificação
-</button>
+      </button>
+
+      <button
+        type="button"
+        data-pagina="analise"
+        id="menu-analise"
+        class="oculto"
+      >
+        Análise e Qualificação
+      </button>
     </nav>
 
     <main>
@@ -500,7 +1108,11 @@
 
       document.getElementById("menu-orientacoes")
         .classList.toggle("oculto", !suporte);
-     document.getElementById("menu-analise")
+
+      document.getElementById("menu-base")
+        .classList.toggle("oculto", !suporte);
+
+      document.getElementById("menu-analise")
         .classList.toggle("oculto", !suporte);
 
       document.getElementById("tela-login").classList.add("oculto");
@@ -515,12 +1127,13 @@
       if (!usuarioAtual || !perfilAtual) return;
 
       const paginasSuporte = [
-  "fila",
-  "importar",
-  "orientacoes",
-  "editar-orientacao",
-  "analise"
-];
+        "fila",
+        "importar",
+        "base",
+        "orientacoes",
+        "editar-orientacao",
+        "analise"
+      ];
 
       if (
         paginasSuporte.includes(pagina) &&
@@ -574,6 +1187,12 @@
         
         } else if (pagina === "analise") {
           await renderAnalise(numeroCarregamento);
+
+        } else if (pagina === "simuladores") {
+          renderSimuladores(numeroCarregamento);
+
+        } else if (pagina === "base") {
+          await renderBase(numeroCarregamento);
 
         } else if (pagina === "importar") {
           renderImportar(numeroCarregamento);
@@ -710,18 +1329,2350 @@
       )];
     }
 
+    /* ==========================================================
+       VÍDEO EXPLICATIVO E SIMULAÇÃO PASSO A PASSO
+       Requer as colunas video_url e simulacao na tabela orientacoes.
+       Se ainda não existirem, o sistema continua funcionando sem elas.
+       ========================================================== */
+
+    let midiaDisponivel = true;
+
+    function erroColunaMidia(error) {
+      return Boolean(error) && (
+        ["42703", "PGRST204"].includes(error.code) ||
+        /video_url|simulacao/i.test(error.message || "")
+      );
+    }
+
+    // Tenta buscar com as colunas de mídia; se não existirem, busca sem elas.
+    async function selecionarOrientacoes(camposBase, montar) {
+      let resposta = await montar(`${camposBase}, video_url, simulacao`);
+
+      if (erroColunaMidia(resposta.error)) {
+        console.warn("Colunas de mídia ausentes em orientacoes.");
+        midiaDisponivel = false;
+        resposta = await montar(camposBase);
+      } else if (!resposta.error) {
+        midiaDisponivel = true;
+      }
+
+      return resposta;
+    }
+
+    // Converte links comuns de vídeo em endereço de player incorporável.
+    function embedVideo(url) {
+      const seguro = linkSeguro(url);
+      if (!seguro) return null;
+
+      const endereco = new URL(seguro);
+      const host = endereco.hostname.replace(/^(www\.|m\.)/, "");
+      const caminho = endereco.pathname;
+
+      let idYoutube = null;
+
+      if (host === "youtu.be") {
+        idYoutube = caminho.slice(1).split("/")[0];
+      } else if (host === "youtube.com" || host === "youtube-nocookie.com") {
+        if (caminho === "/watch") {
+          idYoutube = endereco.searchParams.get("v");
+        } else {
+          const achado = caminho.match(/^\/(embed|shorts|live)\/([^/]+)/);
+          if (achado) idYoutube = achado[2];
+        }
+      }
+
+      if (idYoutube && /^[\w-]{6,20}$/.test(idYoutube)) {
+        return {
+          tipo: "iframe",
+          src: `https://www.youtube-nocookie.com/embed/${idYoutube}?rel=0`
+        };
+      }
+
+      if (host === "vimeo.com" || host === "player.vimeo.com") {
+        const achado = caminho.match(/(\d{5,})/);
+        if (achado) {
+          return {
+            tipo: "iframe",
+            src: `https://player.vimeo.com/video/${achado[1]}`
+          };
+        }
+      }
+
+      if (host === "drive.google.com") {
+        const achado = caminho.match(/\/file\/d\/([\w-]+)/);
+        if (achado) {
+          return {
+            tipo: "iframe",
+            src: `https://drive.google.com/file/d/${achado[1]}/preview`
+          };
+        }
+      }
+
+      if (/\.(mp4|webm|ogg)$/i.test(caminho)) {
+        return { tipo: "video", src: seguro };
+      }
+
+      return null;
+    }
+
+    function htmlVideo(url) {
+      if (!url) return "";
+
+      const video = embedVideo(url);
+
+      if (!video) {
+        const seguro = linkSeguro(url);
+
+        return seguro ? `
+          <p>
+            <a href="${esc(seguro)}" target="_blank" rel="noopener noreferrer">
+              ▶ Assistir vídeo explicativo
+            </a>
+          </p>` : "";
+      }
+
+      const player = video.tipo === "video"
+        ? `<video src="${esc(video.src)}" controls preload="metadata"></video>`
+        : `<iframe
+             src="${esc(video.src)}"
+             title="Vídeo explicativo"
+             loading="lazy"
+             allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+             allowfullscreen
+             referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+
+      return `
+        <div class="midia">
+          <p class="midia-titulo"><strong>🎥 Vídeo explicativo</strong></p>
+          <div class="video-box">${player}</div>
+        </div>`;
+    }
+
+    /*
+      Formato da simulação: uma etapa por linha.
+        emoji | título | explicação
+      O emoji é opcional:  título | explicação
+    */
+    function lerSimulacao(texto) {
+      return String(texto || "")
+        .split(/\r?\n/)
+        .map(linha => linha.trim())
+        .filter(Boolean)
+        .slice(0, 15)
+        .map(linha => {
+          const partes = linha.split("|").map(parte => parte.trim());
+          let icone = "💡";
+
+          const primeiraSemLetras =
+            partes.length >= 2 && !/[\p{L}\p{N}]/u.test(partes[0]);
+
+          if (partes.length >= 3 || primeiraSemLetras) {
+            icone = partes.shift() || "💡";
+          }
+
+          return {
+            icone: Array.from(icone).slice(0, 4).join(""),
+            titulo: partes.shift() || "",
+            texto: partes.join(" | ")
+          };
+        });
+    }
+
+    // Panda guia desenhado em SVG (anima enquanto a simulação toca).
+    const PANDA_SVG = `
+      <svg class="sim-panda" viewBox="0 0 120 140" aria-hidden="true">
+        <ellipse cx="60" cy="134" rx="34" ry="5" fill="#102a43" opacity=".12"/>
+        <g class="sim-corpo">
+          <ellipse cx="26" cy="98" rx="9" ry="17" fill="#243b53"
+                   transform="rotate(20 26 98)"/>
+          <ellipse cx="60" cy="102" rx="32" ry="30" fill="#fff"
+                   stroke="#243b53" stroke-width="2"/>
+          <ellipse cx="60" cy="106" rx="18" ry="16" fill="#eaf4fb"/>
+          <g class="sim-braco">
+            <ellipse cx="94" cy="90" rx="9" ry="18" fill="#243b53"
+                     transform="rotate(-35 94 90)"/>
+          </g>
+          <circle cx="34" cy="26" r="11" fill="#243b53"/>
+          <circle cx="86" cy="26" r="11" fill="#243b53"/>
+          <circle cx="60" cy="50" r="32" fill="#fff"
+                  stroke="#243b53" stroke-width="2"/>
+          <ellipse cx="47" cy="48" rx="8" ry="10" fill="#243b53"
+                   transform="rotate(-20 47 48)"/>
+          <ellipse cx="73" cy="48" rx="8" ry="10" fill="#243b53"
+                   transform="rotate(20 73 48)"/>
+          <circle class="sim-olho" cx="48" cy="47" r="3" fill="#fff"/>
+          <circle class="sim-olho" cx="72" cy="47" r="3" fill="#fff"/>
+          <ellipse cx="60" cy="60" rx="5" ry="3.5" fill="#243b53"/>
+          <path d="M53 66 Q60 72 67 66" stroke="#243b53" stroke-width="2"
+                fill="none" stroke-linecap="round"/>
+          <circle cx="40" cy="62" r="4" fill="#f9b4b4" opacity=".7"/>
+          <circle cx="80" cy="62" r="4" fill="#f9b4b4" opacity=".7"/>
+        </g>
+      </svg>`;
+
+    function htmlSimulacao(passos) {
+      if (!passos.length) return "";
+
+      return `
+        <div class="simulacao"
+             data-passos="${esc(JSON.stringify(passos))}"
+             role="region"
+             aria-label="Simulação passo a passo">
+          <div class="sim-cabecalho">
+            <strong>🎬 Simulação passo a passo</strong>
+            <span class="sim-contador" aria-live="polite"></span>
+          </div>
+
+          <div class="sim-palco">
+            ${PANDA_SVG}
+            <div class="sim-quadro">
+              <span class="sim-icone" aria-hidden="true"></span>
+              <div class="sim-titulo"></div>
+              <p class="sim-texto"></p>
+            </div>
+          </div>
+
+          <div class="sim-progresso"><div class="sim-barra"></div></div>
+
+          <div class="sim-controles">
+            <button type="button" class="botao secundario" data-sim="anterior">
+              ◀ Anterior
+            </button>
+            <button type="button" class="botao" data-sim="tocar">
+              ▶ Reproduzir
+            </button>
+            <button type="button" class="botao secundario" data-sim="proximo">
+              Próximo ▶
+            </button>
+            <div class="sim-pontos">
+              ${passos.map((_, indice) => `
+                <button type="button"
+                        class="sim-ponto"
+                        data-sim-ir="${indice}"
+                        aria-label="Ir para o passo ${indice + 1}"></button>
+              `).join("")}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    const TEMPO_POR_PASSO = 4500;
+
+    // Ativa as simulações dentro de um container (chamar após innerHTML).
+    function iniciarSimulacoes(raiz) {
+      const reduzirMovimento =
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+      let primeira = true;
+
+      raiz.querySelectorAll(".simulacao[data-passos]").forEach(el => {
+        if (el.dataset.iniciada) return;
+        el.dataset.iniciada = "1";
+
+        let passos;
+
+        try {
+          passos = JSON.parse(el.dataset.passos);
+        } catch {
+          return;
+        }
+
+        if (!Array.isArray(passos) || !passos.length) return;
+
+        const quadro = el.querySelector(".sim-quadro");
+        const icone = el.querySelector(".sim-icone");
+        const titulo = el.querySelector(".sim-titulo");
+        const texto = el.querySelector(".sim-texto");
+        const contador = el.querySelector(".sim-contador");
+        const barra = el.querySelector(".sim-barra");
+        const botaoTocar = el.querySelector('[data-sim="tocar"]');
+        const pontos = [...el.querySelectorAll(".sim-ponto")];
+        const ultimo = passos.length - 1;
+
+        let atual = 0;
+        let tocando = false;
+        let temporizador = null;
+
+        function atualizarBotao() {
+          botaoTocar.textContent = tocando
+            ? "⏸ Pausar"
+            : atual >= ultimo ? "↺ Rever" : "▶ Reproduzir";
+        }
+
+        function mostrar(indice) {
+          atual = (indice + passos.length) % passos.length;
+          const passo = passos[atual];
+
+          icone.textContent = passo.icone;
+          titulo.textContent = passo.titulo;
+          texto.textContent = passo.texto;
+          contador.textContent = `Passo ${atual + 1} de ${passos.length}`;
+          barra.style.width = `${((atual + 1) / passos.length) * 100}%`;
+
+          pontos.forEach((ponto, k) => {
+            ponto.classList.toggle("atual", k === atual);
+            ponto.classList.toggle("feito", k < atual);
+          });
+
+          quadro.classList.remove("entrar");
+          void quadro.offsetWidth; // reinicia a animação
+          quadro.classList.add("entrar");
+
+          atualizarBotao();
+        }
+
+        function agendar() {
+          clearTimeout(temporizador);
+          if (!tocando) return;
+
+          temporizador = setTimeout(() => {
+            if (!el.isConnected) {
+              parar();
+              return;
+            }
+
+            if (atual >= ultimo) {
+              parar();
+              return;
+            }
+
+            mostrar(atual + 1);
+            agendar();
+          }, TEMPO_POR_PASSO);
+        }
+
+        function tocar() {
+          if (atual >= ultimo) mostrar(0);
+          tocando = true;
+          el.classList.add("tocando");
+          atualizarBotao();
+          agendar();
+        }
+
+        function parar() {
+          tocando = false;
+          clearTimeout(temporizador);
+          el.classList.remove("tocando");
+          atualizarBotao();
+        }
+
+        el.addEventListener("click", evento => {
+          const botao = evento.target.closest("button");
+          if (!botao || !el.contains(botao)) return;
+
+          if (botao.dataset.sim === "tocar") {
+            tocando ? parar() : tocar();
+          } else if (botao.dataset.sim === "anterior") {
+            mostrar(atual - 1);
+            agendar();
+          } else if (botao.dataset.sim === "proximo") {
+            mostrar(atual + 1);
+            agendar();
+          } else if (botao.dataset.simIr !== undefined) {
+            mostrar(Number(botao.dataset.simIr));
+            agendar();
+          }
+        });
+
+        mostrar(0);
+
+        // Só a primeira simulação da tela inicia sozinha.
+        if (primeira && !reduzirMovimento) tocar();
+        primeira = false;
+      });
+    }
+
+    // Campos de vídeo/simulação usados nos formulários do suporte.
+    function camposMidiaHtml(prefixo, item = {}) {
+      const exemplo =
+        "📄 | Separe os documentos | Tenha em mãos o contracheque e a escala.&#10;" +
+        "🧮 | Some as horas | Compare as horas trabalhadas com a jornada.&#10;" +
+        "✅ | Abra o chamado | Se houver diferença, descreva o que verificou.";
+
+      return `
+        <fieldset class="campo-midia">
+          <legend>Vídeo e simulação (opcional)</legend>
+
+          ${midiaDisponivel ? "" : `
+            <div class="aviso erro">
+              As colunas <code>video_url</code> e <code>simulacao</code>
+              ainda não existem na tabela <code>orientacoes</code>.
+              Execute o SQL de atualização no Supabase para salvar esses campos.
+            </div>`}
+
+          <div class="campo">
+            <label for="${prefixo}-video">Link do vídeo explicativo</label>
+            <input id="${prefixo}-video"
+                   type="url"
+                   placeholder="YouTube, Vimeo, Google Drive ou arquivo .mp4"
+                   value="${esc(item.video_url)}">
+            <small class="muted">
+              No Google Drive, o vídeo precisa estar compartilhado
+              para "qualquer pessoa com o link".
+            </small>
+          </div>
+
+          <div class="campo">
+            <label for="${prefixo}-simulacao">Simulação passo a passo</label>
+            <textarea id="${prefixo}-simulacao"
+                      placeholder="${exemplo}">${esc(item.simulacao)}</textarea>
+            <small class="muted">
+              Uma etapa por linha, no formato
+              <strong>emoji | título | explicação</strong>.
+              O emoji é opcional. Máximo de 15 etapas.
+            </small>
+          </div>
+
+          <button type="button"
+                  class="botao secundario"
+                  id="${prefixo}-previa-botao">
+            👁 Pré-visualizar vídeo e simulação
+          </button>
+
+          <div id="${prefixo}-previa"></div>
+        </fieldset>`;
+    }
+
+    function ligarPreviaMidia(prefixo) {
+      const botao = document.getElementById(`${prefixo}-previa-botao`);
+      if (!botao) return;
+
+      botao.addEventListener("click", () => {
+        const url = document.getElementById(`${prefixo}-video`).value.trim();
+        const sim = document.getElementById(`${prefixo}-simulacao`).value;
+        const alvo = document.getElementById(`${prefixo}-previa`);
+
+        if (url && !embedVideo(url)) {
+          mostrarAlerta(
+            "Link de vídeo não reconhecido. Use YouTube, Vimeo, " +
+            "Google Drive ou um arquivo .mp4/.webm."
+          );
+        } else {
+          limparAlerta();
+        }
+
+        const html = htmlVideo(url) + htmlSimulacao(lerSimulacao(sim));
+        alvo.innerHTML = html || '<p class="muted">Nada para pré-visualizar.</p>';
+        iniciarSimulacoes(alvo);
+      });
+    }
+
+    // Lê e valida os campos de mídia. Retorna null se houver erro.
+    function lerCamposMidia(prefixo) {
+      const video = document.getElementById(`${prefixo}-video`).value.trim();
+      const simulacao = document.getElementById(`${prefixo}-simulacao`).value.trim();
+
+      if (video && !embedVideo(video)) {
+        mostrarAlerta(
+          "Link de vídeo não reconhecido. Use YouTube, Vimeo, " +
+          "Google Drive ou um arquivo .mp4/.webm."
+        );
+        return null;
+      }
+
+      return {
+        video_url: video || null,
+        simulacao: simulacao || null
+      };
+    }
+
+    /* ==========================================================
+       SIMULADOR: CALCULADORA DE HORA EXTRA (estimativa)
+       Base: CLT art. 59 / CF art. 7º, XVI (adicional mínimo de 50%).
+       Divisor = jornada semanal × 5 (44h → 220, 40h → 200 etc.).
+       ========================================================== */
+
+    const DIVISORES_JORNADA = { 44: 220, 42: 210, 40: 200, 36: 180, 30: 150 };
+
+    // Parcelas salariais habituais que integram a base da hora extra.
+    const PROVENTOS_BASE = [
+      { chave: "salario",   rotulo: "Salário-base",                       exemplo: "Ex.: 3000", cor: "#1d4e78" },
+      { chave: "insal",     rotulo: "Adicional de insalubridade",         exemplo: "Ex.: 324,20", cor: "#bc921e" },
+      { chave: "peric",     rotulo: "Adicional de periculosidade",        exemplo: "Ex.: 900", cor: "#b42318" },
+      { chave: "anuenio",   rotulo: "Anuênio / tempo de serviço",         exemplo: "Ex.: 150", cor: "#6b46c1" },
+      { chave: "grat",      rotulo: "Gratificação (função, habitual)",    exemplo: "Ex.: 500", cor: "#2f855a" },
+      { chave: "outros",    rotulo: "Outras parcelas salariais fixas",    exemplo: "Ex.: 0", cor: "#627d98" }
+    ];
+
+    function moeda(valor) {
+      return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    function numeroBr(valor, casas = 2) {
+      return valor.toLocaleString("pt-BR", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: casas
+      });
+    }
+
+    function perguntaSobreHoraExtra(texto) {
+      return /hora?s?\s*-?\s*extras?|sobrejornada|adicional de (50|100)/
+        .test(normalizarBusca(texto));
+    }
+
+    function htmlCalculadoraHoraExtra() {
+      return `
+        <div class="calc-he" role="region" aria-label="Calculadora de hora extra">
+          <div class="sim-cabecalho">
+            <strong>🧮 Calculadora de hora extra</strong>
+            <span>Estimativa</span>
+          </div>
+
+          <h3 class="calc-subtitulo">1. Proventos que formam a base (R$ por mês)</h3>
+          <p class="muted calc-dica">
+            Use os valores do contracheque. Deixe em branco o que não recebe.
+          </p>
+
+          <div class="calc-grade">
+            ${PROVENTOS_BASE.map(item => `
+              <label>
+                ${esc(item.rotulo)}
+                <input data-c="${item.chave}" data-provento
+                       type="number" min="0" step="0.01" inputmode="decimal"
+                       placeholder="${esc(item.exemplo)}">
+              </label>
+            `).join("")}
+          </div>
+
+          <div class="calc-composicao" aria-hidden="true">
+            <div class="calc-pilha" data-pilha></div>
+            <div class="calc-legenda" data-legenda></div>
+          </div>
+
+          <div data-alerta-calc></div>
+
+          <details class="calc-detalhes">
+            <summary>O que entra e o que não entra na base?</summary>
+            <p><strong>Entram</strong> as parcelas salariais pagas com habitualidade:
+              salário-base, insalubridade (OJ 47 da SDI-1 do TST), periculosidade
+              (Súmula 132), adicional por tempo de serviço — anuênio, triênio,
+              quinquênio (Súmula 203) —, gratificação de função e outras parcelas
+              fixas mensais de natureza salarial.</p>
+            <p><strong>Não entram</strong> parcelas indenizatórias ou eventuais,
+              como vale-transporte, auxílio-alimentação, diárias, reembolsos,
+              PLR e gorjetas (Súmula 354).</p>
+            <p>O <strong>adicional noturno</strong> integra a base apenas das horas
+              extras feitas no período noturno (OJ 97 da SDI-1), por isso não
+              está nesta soma.</p>
+          </details>
+
+          <h3 class="calc-subtitulo">2. Jornada e horas extras</h3>
+
+          <div class="calc-grade">
+            <label>
+              Jornada semanal
+              <select data-c="jornada">
+                <option value="44">44 h (divisor 220)</option>
+                <option value="42">42 h (divisor 210)</option>
+                <option value="40">40 h (divisor 200)</option>
+                <option value="36">36 h / 12x36 (divisor 180)</option>
+                <option value="30">30 h (divisor 150)</option>
+                <option value="outro">Outro divisor</option>
+              </select>
+            </label>
+
+            <label class="calc-divisor oculto">
+              Divisor mensal
+              <input data-c="divisor" type="number" min="1" step="1" value="220">
+            </label>
+
+            <label>
+              Horas extras em dias úteis
+              <input data-c="h1" type="number" min="0" step="0.5" value="0"
+                     inputmode="decimal">
+            </label>
+
+            <label>
+              Adicional em dias úteis (%)
+              <input data-c="p1" type="number" min="0" step="1" value="50">
+            </label>
+
+            <label>
+              Horas extras em domingos/feriados
+              <input data-c="h2" type="number" min="0" step="0.5" value="0"
+                     inputmode="decimal">
+            </label>
+
+            <label>
+              Adicional em domingos/feriados (%)
+              <input data-c="p2" type="number" min="0" step="1" value="100">
+            </label>
+          </div>
+
+          <h3 class="calc-subtitulo">3. Horas extras noturnas (22h às 5h)</h3>
+
+          <div class="calc-grade">
+            <label>
+              Horas extras noturnas (no relógio)
+              <input data-c="h3" type="number" min="0" step="0.5" value="0"
+                     inputmode="decimal">
+            </label>
+
+            <label>
+              Adicional da hora extra noturna (%)
+              <input data-c="p3" type="number" min="0" step="1" value="50">
+            </label>
+
+            <label>
+              Adicional noturno (%)
+              <input data-c="pn" type="number" min="0" step="1" value="20">
+            </label>
+
+            <label class="calc-check">
+              <input data-c="reduzida" type="checkbox" checked>
+              Aplicar hora noturna reduzida (52min30s)
+            </label>
+          </div>
+
+          <h3 class="calc-subtitulo">4. Reflexos</h3>
+
+          <div class="calc-grade">
+            <label>
+              Dias úteis no mês (inclui sábados)
+              <input data-c="du" type="number" min="1" step="1" value="26">
+            </label>
+
+            <label>
+              Domingos e feriados no mês
+              <input data-c="df" type="number" min="0" step="1" value="4">
+            </label>
+
+            <label class="calc-check">
+              <input data-c="habitual" type="checkbox" checked>
+              As horas extras são habituais (se repetem todo mês)
+            </label>
+          </div>
+
+          <div class="calc-barras" aria-hidden="true">
+            <div class="calc-linha">
+              <span>Hora normal</span>
+              <div class="calc-trilho">
+                <div class="calc-preenchimento calc-normal" data-barra="normal"></div>
+              </div>
+              <span class="calc-valor" data-valor="normal">—</span>
+            </div>
+            <div class="calc-linha">
+              <span>Hora extra (dia útil)</span>
+              <div class="calc-trilho">
+                <div class="calc-preenchimento calc-util" data-barra="util"></div>
+              </div>
+              <span class="calc-valor" data-valor="util">—</span>
+            </div>
+            <div class="calc-linha">
+              <span>Hora extra (dom./feriado)</span>
+              <div class="calc-trilho">
+                <div class="calc-preenchimento calc-fds" data-barra="fds"></div>
+              </div>
+              <span class="calc-valor" data-valor="fds">—</span>
+            </div>
+            <div class="calc-linha">
+              <span>Hora extra noturna</span>
+              <div class="calc-trilho">
+                <div class="calc-preenchimento calc-noite" data-barra="noite"></div>
+              </div>
+              <span class="calc-valor" data-valor="noite">—</span>
+            </div>
+          </div>
+
+          <div class="calc-total">
+            <span>Total no mês (horas extras + DSR)</span>
+            <strong data-total aria-live="polite">R$ 0,00</strong>
+          </div>
+
+          <div class="calc-reflexos" data-reflexos>
+            <div class="calc-bloco">
+              <span>🗓️ Reflexo no DSR (mês)</span>
+              <strong data-r="dsr">R$ 0,00</strong>
+            </div>
+            <div class="calc-bloco">
+              <span>🎁 A mais no 13º (ano)</span>
+              <strong data-r="decimo">R$ 0,00</strong>
+            </div>
+            <div class="calc-bloco">
+              <span>🏖️ A mais nas férias + 1/3</span>
+              <strong data-r="ferias">R$ 0,00</strong>
+            </div>
+            <div class="calc-bloco">
+              <span>🏦 FGTS depositado (mês)</span>
+              <strong data-r="fgts">R$ 0,00</strong>
+            </div>
+          </div>
+          <p class="muted calc-dica" data-nota-reflexos>
+            13º e férias consideram que essa média mensal se repete
+            ao longo do período aquisitivo.
+          </p>
+
+          <h3 class="calc-subtitulo">
+            5. Descontos na folha: INSS e IRRF (tabelas ${TABELAS_FOLHA.vigencia})
+          </h3>
+          <p class="muted calc-dica">
+            Parte do bruto do mês: proventos informados + horas extras + DSR.
+            Para empregados CLT (regime geral). Servidores estatutários
+            contribuem para regime próprio, com outras alíquotas.
+          </p>
+
+          <div class="calc-grade">
+            <label>
+              Dependentes para IR
+              <input data-c="dependentes" type="number" min="0" step="1" value="0">
+            </label>
+
+            <label>
+              Pensão alimentícia judicial (R$)
+              <input data-c="pensao" type="number" min="0" step="0.01" value="0"
+                     inputmode="decimal">
+            </label>
+
+            <label>
+              Outros proventos tributáveis no mês (R$)
+              <input data-c="outrosTrib" type="number" min="0" step="0.01" value="0"
+                     inputmode="decimal">
+            </label>
+
+            <label class="calc-check">
+              <input data-c="incluirHE" type="checkbox" checked>
+              Incluir horas extras e DSR no bruto
+            </label>
+          </div>
+
+          <div class="folha-resumo" data-folha-resumo>
+            <div class="folha-card"><span>💰 Bruto do mês</span><strong data-f="bruto">R$ 0,00</strong></div>
+            <div class="folha-card desconto"><span>🏛️ INSS</span><strong data-f="inss">R$ 0,00</strong></div>
+            <div class="folha-card desconto"><span>🦁 IRRF</span><strong data-f="irrf">R$ 0,00</strong></div>
+            <div class="folha-card liquido"><span>✅ Líquido estimado</span><strong data-f="liquido">R$ 0,00</strong></div>
+          </div>
+
+          <p class="muted calc-dica" data-f="ganho"></p>
+
+          <details class="calc-detalhes folha-detalhes" open>
+            <summary>Tabela do INSS — cálculo por faixa</summary>
+            <div class="tabela" data-tabela-inss></div>
+          </details>
+
+          <details class="calc-detalhes folha-detalhes" open>
+            <summary>Tabela do IRRF — base, faixa e redutor</summary>
+            <div class="tabela" data-tabela-irrf></div>
+            <ol class="calc-passos" data-passos-irrf></ol>
+          </details>
+
+          <h3>Como o cálculo foi feito</h3>
+          <ol class="calc-passos" data-passos-calc>
+            <li class="muted">Informe o salário para ver o passo a passo.</li>
+          </ol>
+
+          <p class="muted" style="font-size: 13px">
+            Estimativa baseada na CLT (art. 59: adicional mínimo de 50%;
+            art. 73: adicional noturno de 20% e hora noturna de 52min30s),
+            na Súmula 264 do TST (base com parcelas salariais), na OJ 97
+            (adicional noturno na base da hora extra noturna), na Súmula 172
+            (reflexo no DSR) e na OJ 394, com a redação de 2023 (o DSR majorado
+            repercute em férias, 13º, aviso prévio e FGTS para horas extras feitas
+            a partir de 20/03/2023). INSS e IRRF seguem as tabelas de
+            ${TABELAS_FOLHA.vigencia} (Portaria Interministerial MPS/MF e Lei
+            15.270/2025); o desconto real pode variar com outras verbas do mês,
+            consignados e contribuições sindicais. Não inclui aviso prévio.
+            Na escala 12x36, a CLT (art. 59-A) prevê que a remuneração mensal
+            já abrange DSR, feriados e prorrogações noturnas da jornada normal:
+            confira a convenção. Convenção ou acordo coletivo pode prever
+            percentuais, divisores e parcelas diferentes, e servidores
+            estatutários seguem regras próprias. Não substitui a análise do RH
+            ou do jurídico.
+          </p>
+        </div>`;
+    }
+
+    function animarValor(elemento, destino) {
+      const reduzir =
+        window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      const origem = Number(elemento.dataset.atual || 0);
+
+      elemento.dataset.atual = String(destino);
+      cancelAnimationFrame(Number(elemento.dataset.quadro || 0));
+
+      if (reduzir || origem === destino) {
+        elemento.textContent = moeda(destino);
+        return;
+      }
+
+      const inicio = performance.now();
+      const duracao = 600;
+
+      function passo(agora) {
+        const t = Math.min(1, (agora - inicio) / duracao);
+        const suave = 1 - Math.pow(1 - t, 3);
+
+        elemento.textContent = moeda(origem + (destino - origem) * suave);
+
+        if (t < 1) {
+          elemento.dataset.quadro = String(requestAnimationFrame(passo));
+        }
+      }
+
+      elemento.dataset.quadro = String(requestAnimationFrame(passo));
+    }
+
+    function calcularHoraExtra(el) {
+      const campo = nome => el.querySelector(`[data-c="${nome}"]`);
+      const ler = nome => {
+        const valor = Number(String(campo(nome).value).replace(",", "."));
+        return Number.isFinite(valor) && valor > 0 ? valor : 0;
+      };
+
+      const jornada = campo("jornada").value;
+      const outro = jornada === "outro";
+
+      el.querySelector(".calc-divisor").classList.toggle("oculto", !outro);
+
+      const divisor = outro ? ler("divisor") : DIVISORES_JORNADA[jornada];
+
+      // Soma dos proventos que formam a base.
+      const partes = PROVENTOS_BASE
+        .map(item => ({ ...item, valor: ler(item.chave) }))
+        .filter(item => item.valor > 0);
+      const salario = partes.reduce((soma, item) => soma + item.valor, 0);
+
+      const pilha = el.querySelector("[data-pilha]");
+      const legenda = el.querySelector("[data-legenda]");
+      const alertaCalc = el.querySelector("[data-alerta-calc]");
+
+      if (!pilha.children.length) {
+        pilha.innerHTML = PROVENTOS_BASE.map(item =>
+          `<span data-fatia="${item.chave}"
+                 style="width:0;background:${item.cor}"
+                 title="${esc(item.rotulo)}"></span>`
+        ).join("");
+      }
+
+      PROVENTOS_BASE.forEach(item => {
+        const parte = partes.find(p => p.chave === item.chave);
+        const largura = parte && salario ? (parte.valor / salario) * 100 : 0;
+
+        pilha.querySelector(`[data-fatia="${item.chave}"]`)
+          .style.width = `${largura}%`;
+      });
+
+      legenda.innerHTML = partes.length
+        ? partes.map(item => `
+            <span><i style="background:${item.cor}"></i>
+              ${esc(item.rotulo)}: <strong>${esc(moeda(item.valor))}</strong>
+            </span>`).join("") +
+          `<span class="calc-soma">Base total: <strong>${esc(moeda(salario))}</strong></span>`
+        : "";
+
+      alertaCalc.innerHTML = ler("insal") > 0 && ler("peric") > 0
+        ? `<div class="aviso erro">
+             Pela CLT (art. 193, § 2º), insalubridade e periculosidade
+             não se acumulam: o trabalhador recebe apenas um dos dois.
+             Confira o contracheque antes de usar a soma.
+           </div>`
+        : "";
+      const h1 = ler("h1");
+      const h2 = ler("h2");
+      const h3Relogio = ler("h3");
+      const p1 = ler("p1");
+      const p2 = ler("p2");
+      const p3 = ler("p3");
+      const pn = ler("pn");
+      const reduzida = campo("reduzida").checked;
+      const habitual = campo("habitual").checked;
+      const diasUteis = ler("du");
+      const descansos = ler("df");
+
+      // Hora noturna reduzida: 60 ÷ 52,5 = 1,142857...
+      const FATOR_NOTURNO = 60 / 52.5;
+      const h3 = reduzida ? h3Relogio * FATOR_NOTURNO : h3Relogio;
+
+      const chaves = ["normal", "util", "fds", "noite"];
+      const barras = Object.fromEntries(chaves.map(chave =>
+        [chave, el.querySelector(`[data-barra="${chave}"]`)]
+      ));
+      const valores = Object.fromEntries(chaves.map(chave =>
+        [chave, el.querySelector(`[data-valor="${chave}"]`)]
+      ));
+      const reflexos = Object.fromEntries(
+        ["dsr", "decimo", "ferias", "fgts"].map(chave =>
+          [chave, el.querySelector(`[data-r="${chave}"]`)]
+        )
+      );
+      const total = el.querySelector("[data-total]");
+      const passos = el.querySelector("[data-passos-calc]");
+
+      el.querySelector("[data-reflexos]").classList.toggle("inativo", !habitual);
+      el.querySelector("[data-nota-reflexos]").textContent = habitual
+        ? "13º e férias consideram que essa média mensal se repete ao longo do período aquisitivo."
+        : "Horas extras eventuais não geram reflexo em 13º, férias e DSR pela média. " +
+          "O FGTS incide sobre o valor pago no mês.";
+
+      if (!salario || !divisor) {
+        Object.values(barras).forEach(barra => { barra.style.width = "0"; });
+        Object.values(valores).forEach(valor => { valor.textContent = "—"; });
+        Object.values(reflexos).forEach(valor => animarValor(valor, 0));
+        animarValor(total, 0);
+        passos.innerHTML =
+          '<li class="muted">Informe o salário para ver o passo a passo.</li>';
+        calcularFolha(el, 0, 0);
+        return;
+      }
+
+      const hora = salario / divisor;
+      const horaUtil = hora * (1 + p1 / 100);
+      const horaFds = hora * (1 + p2 / 100);
+      const horaNoturna = hora * (1 + pn / 100);          // OJ 97
+      const horaExtraNoturna = horaNoturna * (1 + p3 / 100);
+
+      const totalUtil = horaUtil * h1;
+      const totalFds = horaFds * h2;
+      const totalNoite = horaExtraNoturna * h3;
+      const totalHE = totalUtil + totalFds + totalNoite;
+
+      // Súmula 172 do TST: reflexo das horas extras habituais no DSR.
+      const dsr = habitual && diasUteis ? (totalHE / diasUteis) * descansos : 0;
+      const mensal = totalHE + dsr;
+
+      // OJ 394 (2023): o DSR majorado também repercute em 13º, férias e FGTS.
+      const decimo = habitual ? mensal : 0;
+      const ferias = habitual ? mensal * (4 / 3) : 0;
+      const fgts = mensal * 0.08;
+
+      const maior = Math.max(hora, horaUtil, horaFds, horaExtraNoturna);
+      const precos = { normal: hora, util: horaUtil, fds: horaFds, noite: horaExtraNoturna };
+
+      chaves.forEach(chave => {
+        barras[chave].style.width = `${(precos[chave] / maior) * 100}%`;
+        valores[chave].textContent = moeda(precos[chave]);
+      });
+
+      animarValor(total, mensal);
+      animarValor(reflexos.dsr, dsr);
+      animarValor(reflexos.decimo, decimo);
+      animarValor(reflexos.ferias, ferias);
+      animarValor(reflexos.fgts, fgts);
+
+      const m = valor => esc(moeda(valor));
+      const n = (valor, casas) => esc(numeroBr(valor, casas));
+
+      const linhas = [
+        `<strong>Base de cálculo:</strong> ${partes.map(item =>
+            `${esc(item.rotulo.toLowerCase())} ${m(item.valor)}`
+          ).join(" + ")} = <strong>${m(salario)}</strong>`,
+        `<strong>Hora normal:</strong> ${m(salario)} ÷ ${n(divisor)}
+         = <strong>${m(hora)}</strong>`,
+        `<strong>Hora extra em dia útil:</strong> ${m(hora)} × ${n(1 + p1 / 100, 4)}
+         = ${m(horaUtil)} × ${n(h1)} h = <strong>${m(totalUtil)}</strong>`,
+        `<strong>Hora extra em domingo/feriado:</strong> ${m(hora)} × ${n(1 + p2 / 100, 4)}
+         = ${m(horaFds)} × ${n(h2)} h = <strong>${m(totalFds)}</strong>`
+      ];
+
+      if (h3Relogio > 0) {
+        linhas.push(
+          (reduzida
+            ? `<strong>Hora noturna reduzida:</strong> ${n(h3Relogio)} h no relógio
+               × 1,1429 = <strong>${n(h3)} h</strong>`
+            : `<strong>Horas noturnas:</strong> ${n(h3)} h (sem redução)`),
+          `<strong>Hora extra noturna:</strong> ${m(hora)} × ${n(1 + pn / 100, 4)}
+           (adicional noturno) = ${m(horaNoturna)} × ${n(1 + p3 / 100, 4)}
+           = ${m(horaExtraNoturna)} × ${n(h3)} h = <strong>${m(totalNoite)}</strong>`
+        );
+      }
+
+      linhas.push(
+        `<strong>Total de horas extras:</strong> <strong>${m(totalHE)}</strong>`
+      );
+
+      if (habitual) {
+        linhas.push(
+          `<strong>Reflexo no DSR:</strong> ${m(totalHE)} ÷ ${n(diasUteis)} dias úteis
+           × ${n(descansos)} domingos/feriados = <strong>${m(dsr)}</strong>`,
+          `<strong>Total do mês:</strong> ${m(totalHE)} + ${m(dsr)}
+           = <strong>${m(mensal)}</strong>`,
+          `<strong>13º:</strong> média mensal de ${m(mensal)} → cerca de
+           <strong>${m(decimo)}</strong> a mais no 13º do ano
+           (${m(decimo / 12)} por mês trabalhado)`,
+          `<strong>Férias + 1/3:</strong> ${m(mensal)} × 4/3
+           = <strong>${m(ferias)}</strong> a mais nas férias`
+        );
+      }
+
+      linhas.push(
+        `<strong>FGTS:</strong> 8% × ${m(mensal)} = <strong>${m(fgts)}</strong>
+         depositados no mês (não vem no contracheque)`
+      );
+
+      const alertas = [];
+
+      if (p1 < 50 || (h3Relogio > 0 && p3 < 50)) {
+        alertas.push("a CLT prevê adicional mínimo de 50% para a hora extra");
+      }
+
+      if (h3Relogio > 0 && pn < 20) {
+        alertas.push("o adicional noturno urbano mínimo da CLT é de 20%");
+      }
+
+      alertas.forEach(texto => linhas.push(
+        `<span style="color:#b42318">Atenção: ${esc(texto)}.</span>`
+      ));
+
+      passos.innerHTML = linhas.map(linha => `<li>${linha}</li>`).join("");
+
+      calcularFolha(el, salario, mensal);
+    }
+
+    /* ==========================================================
+       INSS E IRRF (empregado CLT) — ATUALIZAR A CADA ANO.
+       INSS 2026: Portaria Interministerial MPS/MF nº 13/2026.
+       IRRF 2026: tabela da Lei 15.191/2025 + redutor da Lei 15.270/2025.
+       ========================================================== */
+    const TABELAS_FOLHA = {
+      vigencia: "2026",
+      inss: [
+        { ate: 1621.00, aliquota: 0.075 },
+        { ate: 2902.84, aliquota: 0.09 },
+        { ate: 4354.27, aliquota: 0.12 },
+        { ate: 8475.55, aliquota: 0.14 }   // teto
+      ],
+      irrf: [
+        { ate: 2428.80,  aliquota: 0,     deduzir: 0 },
+        { ate: 2826.65,  aliquota: 0.075, deduzir: 182.16 },
+        { ate: 3751.05,  aliquota: 0.15,  deduzir: 394.16 },
+        { ate: 4664.68,  aliquota: 0.225, deduzir: 675.49 },
+        { ate: Infinity, aliquota: 0.275, deduzir: 908.73 }
+      ],
+      deducaoDependente: 189.59,
+      descontoSimplificado: 607.20,
+      redutor: {
+        isencaoAte: 5000.00,   // redução de até R$ 312,89 (zera o imposto)
+        maximo: 312.89,
+        decrescenteAte: 7350.00,
+        constante: 978.62,     // 978,62 − 0,133145 × rendimentos
+        fator: 0.133145
+      },
+      retencaoMinima: 10.00    // Lei 9.430/1996, art. 67
+    };
+
+    const centavos = valor => Math.round(valor * 100) / 100;
+
+    function calcularInss(bruto) {
+      let anterior = 0;
+      let total = 0;
+
+      const faixas = TABELAS_FOLHA.inss.map(faixa => {
+        const base = Math.max(0, Math.min(bruto, faixa.ate) - anterior);
+        const valor = base * faixa.aliquota;
+        const largura = faixa.ate - anterior;
+        const linha = { ...faixa, de: anterior, base, valor, uso: largura ? base / largura : 0 };
+
+        total += valor;
+        anterior = faixa.ate;
+        return linha;
+      });
+
+      return { faixas, total: centavos(total), noTeto: bruto > TABELAS_FOLHA.inss.at(-1).ate };
+    }
+
+    function calcularIrrf(bruto, inss, dependentes, pensao) {
+      const t = TABELAS_FOLHA;
+      const deducoesLegais = inss + dependentes * t.deducaoDependente + pensao;
+      const usaSimplificado = t.descontoSimplificado > deducoesLegais;
+      const deducao = usaSimplificado ? t.descontoSimplificado : deducoesLegais;
+      const base = Math.max(0, centavos(bruto - deducao));
+
+      const indiceFaixa = t.irrf.findIndex(faixa => base <= faixa.ate);
+      const faixa = t.irrf[indiceFaixa];
+      const imposto = Math.max(0, centavos(base * faixa.aliquota - faixa.deduzir));
+
+      // Redutor da Lei 15.270/2025: calculado sobre os rendimentos tributáveis.
+      let redutor = 0;
+      const r = t.redutor;
+
+      if (bruto <= r.isencaoAte) {
+        redutor = Math.min(imposto, r.maximo);
+      } else if (bruto <= r.decrescenteAte) {
+        redutor = Math.min(imposto, Math.max(0, centavos(r.constante - r.fator * bruto)));
+      }
+
+      let irrf = centavos(imposto - redutor);
+      const dispensado = irrf > 0 && irrf <= t.retencaoMinima;
+      if (dispensado) irrf = 0;
+
+      return {
+        deducoesLegais, usaSimplificado, deducao, base,
+        indiceFaixa, faixa, imposto, redutor, irrf, dispensado
+      };
+    }
+
+    function calcularFolha(el, salario, mensalHE) {
+      const campo = nome => el.querySelector(`[data-c="${nome}"]`);
+      const ler = nome => {
+        const valor = Number(String(campo(nome).value).replace(",", "."));
+        return Number.isFinite(valor) && valor > 0 ? valor : 0;
+      };
+      const f = chave => el.querySelector(`[data-f="${chave}"]`);
+      const m = valor => esc(moeda(valor));
+      const pct = valor => esc(numeroBr(valor * 100, 2)) + "%";
+
+      const dependentes = Math.floor(ler("dependentes"));
+      const pensao = ler("pensao");
+      const extras = campo("incluirHE").checked ? mensalHE : 0;
+      const bruto = centavos(salario + ler("outrosTrib") + extras);
+
+      const tabelaInss = el.querySelector("[data-tabela-inss]");
+      const tabelaIrrf = el.querySelector("[data-tabela-irrf]");
+      const passosIrrf = el.querySelector("[data-passos-irrf]");
+
+      if (!bruto) {
+        ["bruto", "inss", "irrf", "liquido"].forEach(chave => animarValor(f(chave), 0));
+        f("ganho").textContent = "";
+        tabelaInss.innerHTML = '<p class="muted">Informe os proventos para ver o cálculo.</p>';
+        tabelaIrrf.innerHTML = "";
+        passosIrrf.innerHTML = "";
+        return;
+      }
+
+      const inss = calcularInss(bruto);
+      const ir = calcularIrrf(bruto, inss.total, dependentes, pensao);
+      const liquido = centavos(bruto - inss.total - ir.irrf - pensao);
+
+      animarValor(f("bruto"), bruto);
+      animarValor(f("inss"), inss.total);
+      animarValor(f("irrf"), ir.irrf);
+      animarValor(f("liquido"), liquido);
+
+      // Quanto as horas extras acrescentam ao líquido.
+      if (extras > 0) {
+        const brutoSem = centavos(salario + ler("outrosTrib"));
+        const inssSem = calcularInss(brutoSem).total;
+        const irSem = calcularIrrf(brutoSem, inssSem, dependentes, pensao).irrf;
+        const liquidoSem = brutoSem - inssSem - irSem - pensao;
+
+        f("ganho").innerHTML =
+          `Sem as horas extras, o líquido seria <strong>${m(liquidoSem)}</strong>. ` +
+          `As horas extras acrescentam <strong>${m(liquido - liquidoSem)}</strong> ` +
+          `líquidos de ${m(extras)} brutos.`;
+      } else {
+        f("ganho").textContent = "";
+      }
+
+      // Tabela do INSS com a parte de cada faixa.
+      tabelaInss.innerHTML = `
+        <table class="folha-tabela">
+          <thead>
+            <tr><th>Faixa de salário</th><th>Alíquota</th><th>Parte do salário na faixa</th><th>Contribuição</th></tr>
+          </thead>
+          <tbody>
+            ${inss.faixas.map(faixa => `
+              <tr class="${faixa.base > 0 ? "ativa" : ""}">
+                <td>${faixa.de ? `${m(faixa.de + 0.01)} a ` : "Até "}${m(faixa.ate)}</td>
+                <td>${pct(faixa.aliquota)}</td>
+                <td>
+                  <div class="folha-uso"><span style="width:${(faixa.uso * 100).toFixed(1)}%"></span></div>
+                  ${m(faixa.base)}
+                </td>
+                <td><strong>${m(faixa.valor)}</strong></td>
+              </tr>`).join("")}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">
+                Total do INSS ${inss.noTeto ? "(limitado ao teto)" : ""} ·
+                alíquota efetiva ${pct(inss.total / bruto)}
+              </td>
+              <td><strong>${m(inss.total)}</strong></td>
+            </tr>
+          </tfoot>
+        </table>`;
+
+      // Tabela do IRRF com a faixa usada destacada.
+      let anterior = 0;
+      tabelaIrrf.innerHTML = `
+        <table class="folha-tabela">
+          <thead>
+            <tr><th>Base de cálculo</th><th>Alíquota</th><th>Parcela a deduzir</th></tr>
+          </thead>
+          <tbody>
+            ${TABELAS_FOLHA.irrf.map((faixa, indice) => {
+              const texto = faixa.ate === Infinity
+                ? `Acima de ${m(anterior)}`
+                : `${anterior ? `${m(anterior + 0.01)} a ` : "Até "}${m(faixa.ate)}`;
+              anterior = faixa.ate;
+
+              return `
+                <tr class="${indice === ir.indiceFaixa ? "ativa" : ""}">
+                  <td>${texto}${indice === ir.indiceFaixa ? " ◀ sua faixa" : ""}</td>
+                  <td>${faixa.aliquota ? pct(faixa.aliquota) : "Isento"}</td>
+                  <td>${faixa.deduzir ? m(faixa.deduzir) : "—"}</td>
+                </tr>`;
+            }).join("")}
+          </tbody>
+        </table>`;
+
+      const r = TABELAS_FOLHA.redutor;
+      const linhas = [
+        `<strong>Deduções legais:</strong> INSS ${m(inss.total)}` +
+          (dependentes ? ` + ${dependentes} dependente(s) × ${m(TABELAS_FOLHA.deducaoDependente)}` : "") +
+          (pensao ? ` + pensão ${m(pensao)}` : "") +
+          ` = ${m(ir.deducoesLegais)}`,
+        `<strong>Desconto simplificado:</strong> ${m(TABELAS_FOLHA.descontoSimplificado)} →
+         usado o mais vantajoso: <strong>${ir.usaSimplificado ? "simplificado" : "deduções legais"}</strong>`,
+        `<strong>Base do IR:</strong> ${m(bruto)} − ${m(ir.deducao)} = <strong>${m(ir.base)}</strong>`,
+        ir.faixa.aliquota
+          ? `<strong>Imposto pela tabela:</strong> ${m(ir.base)} × ${pct(ir.faixa.aliquota)}
+             − ${m(ir.faixa.deduzir)} = <strong>${m(ir.imposto)}</strong>`
+          : `<strong>Imposto pela tabela:</strong> base na faixa de isenção = <strong>${m(0)}</strong>`
+      ];
+
+      if (ir.imposto > 0) {
+        if (bruto <= r.isencaoAte) {
+          linhas.push(
+            `<strong>Redutor (Lei 15.270/2025):</strong> rendimentos até ${m(r.isencaoAte)}
+             → redução de até ${m(r.maximo)} = <strong>− ${m(ir.redutor)}</strong>`
+          );
+        } else if (bruto <= r.decrescenteAte) {
+          linhas.push(
+            `<strong>Redutor (Lei 15.270/2025):</strong> ${m(r.constante)} −
+             (${esc(String(r.fator).replace(".", ","))} × ${m(bruto)})
+             = <strong>− ${m(ir.redutor)}</strong>`
+          );
+        } else {
+          linhas.push(
+            `<strong>Redutor (Lei 15.270/2025):</strong> não se aplica a rendimentos
+             acima de ${m(r.decrescenteAte)}`
+          );
+        }
+      }
+
+      linhas.push(
+        ir.dispensado
+          ? `<strong>IRRF:</strong> valor de até ${m(TABELAS_FOLHA.retencaoMinima)} não é retido
+             (Lei 9.430/1996, art. 67) = <strong>${m(0)}</strong>`
+          : `<strong>IRRF a reter:</strong> ${m(ir.imposto)} − ${m(ir.redutor)}
+             = <strong>${m(ir.irrf)}</strong>`,
+        `<strong>Líquido:</strong> ${m(bruto)} − INSS ${m(inss.total)} − IRRF ${m(ir.irrf)}` +
+          (pensao ? ` − pensão ${m(pensao)}` : "") +
+          ` = <strong>${m(liquido)}</strong>`
+      );
+
+      passosIrrf.innerHTML = linhas.map(linha => `<li>${linha}</li>`).join("");
+    }
+
+    function iniciarCalculadoras(raiz) {
+      raiz.querySelectorAll(".calc-he").forEach(el => {
+        if (el.dataset.iniciada) return;
+        el.dataset.iniciada = "1";
+
+        el.addEventListener("input", () => calcularHoraExtra(el));
+        el.addEventListener("change", () => calcularHoraExtra(el));
+        calcularHoraExtra(el);
+      });
+    }
+
+    function renderSimuladores(numeroCarregamento) {
+      if (numeroCarregamento !== carregamentoAtual) return;
+
+      conteudo.innerHTML = `
+        <h1>Simuladores</h1>
+
+        <div class="aviso">
+          Os simuladores fazem estimativas didáticas para ajudar a entender
+          o cálculo. Confira sempre com o RH e com a convenção coletiva.
+          Não informe dados de pacientes.
+        </div>
+
+        <div class="card">
+          ${htmlCalculadoraHoraExtra()}
+        </div>`;
+
+      iniciarCalculadoras(conteudo);
+    }
+
+    /* ==========================================================
+       BASE DE CONHECIMENTO
+       Importa PDF, Word (.docx), PowerPoint (.pptx), .txt e vídeos
+       (link + transcrição .srt/.vtt/texto). O texto é extraído neste
+       navegador, dividido em trechos e salvo nas tabelas
+       documentos_base / trechos_base (ver SF360_base_conhecimento.sql).
+       Os arquivos originais não são enviados.
+       ========================================================== */
+
+    const TIPOS_BASE = {
+      pdf:   { icone: "📕", nome: "PDF" },
+      docx:  { icone: "📘", nome: "Word" },
+      pptx:  { icone: "📙", nome: "PowerPoint" },
+      video: { icone: "🎥", nome: "Vídeo" },
+      texto: { icone: "📄", nome: "Texto" }
+    };
+
+    const LIMITE_TRECHO = 900;
+    const MAX_TRECHOS_DOCUMENTO = 3000;
+    let baseDisponivel = true;
+
+    function erroTabelaBase(error) {
+      return Boolean(error) && (
+        ["42P01", "PGRST205", "PGRST200"].includes(error.code) ||
+        /documentos_base|trechos_base|f_unaccent/i.test(error.message || "")
+      );
+    }
+
+    // ---------- Leitor de ZIP (docx/pptx são arquivos ZIP) ----------
+    async function lerZip(buffer) {
+      const dv = new DataView(buffer);
+      const bytes = new Uint8Array(buffer);
+      const decodificador = new TextDecoder();
+
+      let fim = -1;
+      const limite = Math.max(0, bytes.length - 65557);
+
+      for (let i = bytes.length - 22; i >= limite; i--) {
+        if (dv.getUint32(i, true) === 0x06054b50) {
+          fim = i;
+          break;
+        }
+      }
+
+      if (fim < 0) throw new Error("O arquivo não é um documento Office válido.");
+
+      const total = dv.getUint16(fim + 10, true);
+      let ponteiro = dv.getUint32(fim + 16, true);
+      const entradas = new Map();
+
+      for (let k = 0; k < total; k++) {
+        if (dv.getUint32(ponteiro, true) !== 0x02014b50) break;
+
+        const metodo = dv.getUint16(ponteiro + 10, true);
+        const tamanho = dv.getUint32(ponteiro + 20, true);
+        const tamNome = dv.getUint16(ponteiro + 28, true);
+        const tamExtra = dv.getUint16(ponteiro + 30, true);
+        const tamComentario = dv.getUint16(ponteiro + 32, true);
+        const local = dv.getUint32(ponteiro + 42, true);
+        const nome = decodificador.decode(
+          bytes.subarray(ponteiro + 46, ponteiro + 46 + tamNome)
+        );
+
+        entradas.set(nome, { metodo, tamanho, local });
+        ponteiro += 46 + tamNome + tamExtra + tamComentario;
+      }
+
+      return {
+        nomes: [...entradas.keys()],
+
+        async texto(nome) {
+          const entrada = entradas.get(nome);
+          if (!entrada) return null;
+
+          const tamNomeLocal = dv.getUint16(entrada.local + 26, true);
+          const tamExtraLocal = dv.getUint16(entrada.local + 28, true);
+          const inicio = entrada.local + 30 + tamNomeLocal + tamExtraLocal;
+          const dados = bytes.subarray(inicio, inicio + entrada.tamanho);
+
+          if (entrada.metodo === 0) return decodificador.decode(dados);
+
+          if (entrada.metodo !== 8 || !window.DecompressionStream) {
+            throw new Error(
+              "Este navegador não consegue abrir o arquivo. " +
+              "Atualize o Chrome, Edge, Firefox ou Safari."
+            );
+          }
+
+          const fluxo = new Blob([dados]).stream()
+            .pipeThrough(new DecompressionStream("deflate-raw"));
+
+          return new Response(fluxo).text();
+        }
+      };
+    }
+
+    function lerXml(texto) {
+      const doc = new DOMParser().parseFromString(texto, "application/xml");
+
+      if (doc.getElementsByTagName("parsererror").length) {
+        throw new Error("Não foi possível ler o conteúdo do arquivo.");
+      }
+
+      return doc;
+    }
+
+    // ---------- Extratores: cada um devolve [{ texto, referencia, inicio }] ----------
+    async function extrairDocx(arquivo) {
+      const zip = await lerZip(await arquivo.arrayBuffer());
+      const xml = await zip.texto("word/document.xml");
+
+      if (!xml) throw new Error("Documento Word sem conteúdo de texto.");
+
+      const doc = lerXml(xml);
+      const unidades = [];
+      let secao = "Início do documento";
+
+      for (const paragrafo of doc.getElementsByTagName("w:p")) {
+        let texto = "";
+
+        for (const no of paragrafo.getElementsByTagName("*")) {
+          if (no.tagName === "w:t") texto += no.textContent;
+          else if (no.tagName === "w:tab") texto += " ";
+          else if (no.tagName === "w:br" || no.tagName === "w:cr") texto += "\n";
+        }
+
+        texto = texto.trim();
+        if (!texto) continue;
+
+        const estilo = paragrafo.getElementsByTagName("w:pStyle")[0]
+          ?.getAttribute("w:val") || "";
+
+        if (/heading|titulo|título|ttulo/i.test(estilo) && texto.length <= 150) {
+          secao = texto;
+        }
+
+        unidades.push({ texto, referencia: `Seção: ${secao.slice(0, 80)}` });
+      }
+
+      return unidades;
+    }
+
+    async function extrairPptx(arquivo) {
+      const zip = await lerZip(await arquivo.arrayBuffer());
+      const numeroSlide = nome => Number(nome.match(/(\d+)\.xml$/)?.[1] || 0);
+
+      const slides = zip.nomes
+        .filter(nome => /^ppt\/slides\/slide\d+\.xml$/.test(nome))
+        .sort((a, b) => numeroSlide(a) - numeroSlide(b));
+
+      const textoDosParagrafos = doc => [...doc.getElementsByTagName("a:p")]
+        .map(p => [...p.getElementsByTagName("a:t")]
+          .map(t => t.textContent).join(""))
+        .map(t => t.trim())
+        .filter(Boolean);
+
+      const unidades = [];
+
+      for (const [indice, nome] of slides.entries()) {
+        const referencia = `Slide ${indice + 1}`;
+        const linhas = textoDosParagrafos(lerXml(await zip.texto(nome)));
+
+        // Anotações do apresentador, quando existirem.
+        const rels = await zip.texto(
+          nome.replace("ppt/slides/", "ppt/slides/_rels/") + ".rels"
+        );
+        const alvoNotas = rels?.match(/Target="\.\.\/notesSlides\/([^"]+)"/)?.[1];
+
+        if (alvoNotas) {
+          const xmlNotas = await zip.texto(`ppt/notesSlides/${alvoNotas}`);
+
+          if (xmlNotas) {
+            const notas = textoDosParagrafos(lerXml(xmlNotas))
+              .filter(linha => !/^\d+$/.test(linha));
+
+            if (notas.length) linhas.push(`Anotações: ${notas.join(" ")}`);
+          }
+        }
+
+        if (linhas.length) {
+          unidades.push({ texto: linhas.join("\n"), referencia });
+        }
+      }
+
+      return unidades;
+    }
+
+    async function extrairPdf(arquivo, aoProgredir) {
+      if (!window.pdfjsLib) {
+        throw new Error("A biblioteca de PDF não carregou. Verifique a conexão.");
+      }
+
+      pdfjsLib.GlobalWorkerOptions.workerSrc = PDF_WORKER_URL;
+
+      const documento = await pdfjsLib
+        .getDocument({ data: await arquivo.arrayBuffer() }).promise;
+      const unidades = [];
+
+      try {
+        for (let numero = 1; numero <= documento.numPages; numero++) {
+          aoProgredir?.(`página ${numero} de ${documento.numPages}`);
+
+          const pagina = await documento.getPage(numero);
+          const conteudoPagina = await pagina.getTextContent();
+          let texto = "";
+
+          for (const item of conteudoPagina.items) {
+            if (typeof item.str !== "string") continue;
+            texto += item.str + (item.hasEOL ? "\n" : " ");
+          }
+
+          pagina.cleanup();
+
+          if (texto.trim()) {
+            unidades.push({ texto, referencia: `Página ${numero}` });
+          }
+        }
+      } finally {
+        await documento.destroy().catch(() => {});
+      }
+
+      return unidades;
+    }
+
+    async function extrairTexto(arquivo) {
+      return (await arquivo.text())
+        .split(/\n\s*\n/)
+        .map(texto => ({ texto, referencia: "" }));
+    }
+
+    function segundosParaTempo(total) {
+      const h = Math.floor(total / 3600);
+      const m = Math.floor((total % 3600) / 60);
+      const s = Math.floor(total % 60);
+      const dois = n => String(n).padStart(2, "0");
+
+      return h ? `${h}:${dois(m)}:${dois(s)}` : `${dois(m)}:${dois(s)}`;
+    }
+
+    function tempoParaSegundos(texto) {
+      const partes = texto.replace(",", ".").split(":").map(Number);
+      if (partes.some(Number.isNaN)) return null;
+
+      return Math.floor(partes.reduce((total, parte) => total * 60 + parte, 0));
+    }
+
+    /*
+      Aceita legendas .srt/.vtt ou transcrição colada. Na transcrição colada,
+      tempos como "0:15" ou "01:02:03" no início da linha marcam o momento.
+    */
+    function extrairTranscricao(texto) {
+      const unidades = [];
+      const linhas = String(texto || "").replace(/\r/g, "").split("\n");
+      const regexIntervalo =
+        /^\s*((?:\d{1,2}:)?\d{1,2}:\d{2}(?:[.,]\d{1,3})?)\s*-->/;
+      const regexTempo = /^\s*\[?((?:\d{1,2}:)?\d{1,2}:\d{2})\]?\s*(.*)$/;
+
+      let inicio = null;
+
+      for (const bruta of linhas) {
+        const linha = bruta.trim();
+
+        if (!linha || linha === "WEBVTT" || /^(NOTE|STYLE|Kind:|Language:)/.test(linha)) {
+          continue;
+        }
+
+        if (/^\d+$/.test(linha)) continue; // número da legenda .srt
+
+        const intervalo = linha.match(regexIntervalo);
+
+        if (intervalo) {
+          inicio = tempoParaSegundos(intervalo[1]);
+          continue;
+        }
+
+        const tempo = linha.match(regexTempo);
+        let conteudoLinha = linha;
+
+        if (tempo) {
+          inicio = tempoParaSegundos(tempo[1]);
+          conteudoLinha = tempo[2];
+        }
+
+        conteudoLinha = conteudoLinha.replace(/<[^>]+>/g, "").trim();
+        if (!conteudoLinha) continue;
+
+        const anterior = unidades[unidades.length - 1];
+
+        // Legendas .vtt automáticas repetem a linha anterior.
+        if (anterior && anterior.texto === conteudoLinha) continue;
+
+        unidades.push({
+          texto: conteudoLinha,
+          referencia: inicio === null ? "" : segundosParaTempo(inicio),
+          inicio
+        });
+      }
+
+      return unidades;
+    }
+
+    // ---------- Divisão em trechos ----------
+    function quebrarLongo(texto, limite) {
+      if (texto.length <= limite) return [texto];
+
+      const partes = [];
+      let atual = "";
+
+      for (const frase of texto.split(/(?<=[.!?;:])\s+/)) {
+        if (frase.length > limite) {
+          if (atual) partes.push(atual);
+          atual = "";
+
+          for (let i = 0; i < frase.length; i += limite) {
+            partes.push(frase.slice(i, i + limite));
+          }
+        } else if ((atual + " " + frase).trim().length > limite) {
+          partes.push(atual);
+          atual = frase;
+        } else {
+          atual = (atual + " " + frase).trim();
+        }
+      }
+
+      if (atual) partes.push(atual);
+      return partes;
+    }
+
+    // Vídeos usam trechos menores para abrir o player no momento certo.
+    const LIMITE_TRECHO_VIDEO = 220;
+
+    function montarTrechos(unidades, cruzarReferencias = false) {
+      const limite = cruzarReferencias ? LIMITE_TRECHO_VIDEO : LIMITE_TRECHO;
+      const trechos = [];
+      let atual = null;
+
+      const fechar = () => {
+        if (atual?.trecho.trim()) {
+          trechos.push({ ...atual, trecho: atual.trecho.trim() });
+        }
+        atual = null;
+      };
+
+      for (const unidade of unidades) {
+        const texto = String(unidade.texto || "")
+          .replace(/[ \t ]+/g, " ")
+          .replace(/ *\n */g, "\n")
+          .replace(/\n{3,}/g, "\n\n")
+          .trim();
+
+        if (!texto) continue;
+
+        const referencia = unidade.referencia || null;
+
+        for (const pedaco of quebrarLongo(texto, limite)) {
+          const mudouReferencia =
+            !cruzarReferencias && atual && atual.referencia !== referencia;
+
+          if (
+            !atual ||
+            mudouReferencia ||
+            atual.trecho.length + pedaco.length + 1 > limite
+          ) {
+            fechar();
+            atual = {
+              trecho: pedaco,
+              referencia,
+              inicio_segundos: Number.isInteger(unidade.inicio) ? unidade.inicio : null
+            };
+          } else {
+            atual.trecho += (cruzarReferencias ? " " : "\n") + pedaco;
+          }
+        }
+      }
+
+      fechar();
+
+      return trechos
+        .slice(0, MAX_TRECHOS_DOCUMENTO)
+        .map((trecho, ordem) => ({ ...trecho, ordem }));
+    }
+
+    function tipoDoArquivo(arquivo) {
+      const nome = arquivo.name.toLowerCase();
+
+      if (nome.endsWith(".pdf")) return "pdf";
+      if (nome.endsWith(".docx")) return "docx";
+      if (nome.endsWith(".pptx")) return "pptx";
+      if (nome.endsWith(".txt") || nome.endsWith(".md")) return "texto";
+      if (nome.endsWith(".doc") || nome.endsWith(".ppt")) return "antigo";
+
+      return null;
+    }
+
+    async function prepararArquivo(arquivo, aoProgredir) {
+      const tipo = tipoDoArquivo(arquivo);
+
+      if (tipo === "antigo") {
+        throw new Error(
+          "Formato antigo (.doc/.ppt). Abra no Word ou PowerPoint e use " +
+          "“Salvar como” .docx ou .pptx."
+        );
+      }
+
+      if (!tipo) {
+        throw new Error("Formato não aceito. Use PDF, .docx, .pptx ou .txt.");
+      }
+
+      const extratores = {
+        pdf: () => extrairPdf(arquivo, aoProgredir),
+        docx: () => extrairDocx(arquivo),
+        pptx: () => extrairPptx(arquivo),
+        texto: () => extrairTexto(arquivo)
+      };
+
+      const trechos = montarTrechos(await extratores[tipo]());
+
+      if (!trechos.length) {
+        throw new Error(
+          tipo === "pdf"
+            ? "Nenhum texto encontrado. O PDF pode ser digitalizado (imagem) e precisar de OCR."
+            : "Nenhum texto encontrado no arquivo."
+        );
+      }
+
+      return {
+        titulo: arquivo.name.replace(/\.[^.]+$/, ""),
+        tipo,
+        fonte_url: "",
+        publicar: false,
+        trechos
+      };
+    }
+
+    // ---------- Gravação no Supabase ----------
+    async function salvarDocumentoBase(item) {
+      const { data: documento, error } = await cliente
+        .from("documentos_base")
+        .insert({
+          titulo: item.titulo.slice(0, 300),
+          tipo: item.tipo,
+          fonte_url: item.fonte_url || null,
+          status: item.publicar ? "publicada" : "pendente",
+          total_trechos: item.trechos.length
+        })
+        .select("id")
+        .single();
+
+      if (error) throw error;
+
+      try {
+        for (let i = 0; i < item.trechos.length; i += 200) {
+          const lote = item.trechos.slice(i, i + 200).map(trecho => ({
+            documento_id: documento.id,
+            ordem: trecho.ordem,
+            trecho: trecho.trecho,
+            referencia: trecho.referencia,
+            inicio_segundos: trecho.inicio_segundos
+          }));
+
+          const { error: erroLote } = await cliente
+            .from("trechos_base")
+            .insert(lote);
+
+          if (erroLote) throw erroLote;
+        }
+      } catch (erro) {
+        // Desfaz o documento incompleto.
+        await cliente.from("documentos_base").delete().eq("id", documento.id);
+        throw erro;
+      }
+    }
+
+    // ---------- Busca automática ----------
+    async function pesquisarBase(pergunta, limite = 5) {
+      if (!baseDisponivel) return [];
+
+      const termos = termosDeBusca(pergunta).slice(0, 12);
+      if (!termos.length) return [];
+
+      const { data, error } = await cliente
+        .from("trechos_base")
+        .select(
+          "id, trecho, referencia, inicio_segundos, " +
+          "documentos_base!inner(id, titulo, tipo, fonte_url, status)"
+        )
+        .eq("documentos_base.status", "publicada")
+        .textSearch("busca", termos.join(" | "), { config: "portuguese" })
+        .limit(80);
+
+      if (erroTabelaBase(error)) {
+        console.warn("Base de conhecimento ainda não criada no Supabase.");
+        baseDisponivel = false;
+        return [];
+      }
+
+      if (error) throw error;
+
+      return (data || [])
+        .map(item => {
+          const texto = normalizarBusca(
+            `${item.documentos_base.titulo} ${item.trecho}`
+          );
+          const pontuacao = termos.reduce(
+            (total, termo) => total + (texto.includes(termo) ? 1 : 0),
+            0
+          );
+
+          return { ...item, documento: item.documentos_base, pontuacao };
+        })
+        .filter(item => item.pontuacao > 0)
+        .sort((a, b) => b.pontuacao - a.pontuacao)
+        .slice(0, limite);
+    }
+
+    // Destaca os termos pesquisados, ignorando acentos.
+    function destacarTermos(texto, termos) {
+      const variantes = {
+        a: "[aáàâã]", e: "[eéèê]", i: "[iíìî]",
+        o: "[oóòôõ]", u: "[uúùü]", c: "[cç]"
+      };
+
+      const padroes = termos
+        .filter(termo => termo.length >= 3)
+        .map(termo => [...termo].map(letra => variantes[letra] || letra).join(""));
+
+      if (!padroes.length) return esc(texto);
+
+      const regex = new RegExp(`(${padroes.join("|")})`, "gi");
+
+      return String(texto)
+        .split(regex)
+        .map((parte, indice) => indice % 2
+          ? `<mark>${esc(parte)}</mark>`
+          : esc(parte))
+        .join("");
+    }
+
+    function urlVideoNoMomento(url, segundos) {
+      const video = embedVideo(url);
+      if (!video) return null;
+
+      const inicio = Math.max(0, Number(segundos) || 0);
+
+      if (video.src.includes("youtube-nocookie.com")) {
+        return { ...video, src: `${video.src}&start=${inicio}&autoplay=1` };
+      }
+
+      if (video.src.includes("player.vimeo.com")) {
+        return { ...video, src: `${video.src}?autoplay=1#t=${inicio}s` };
+      }
+
+      if (video.tipo === "video") {
+        return { ...video, src: `${video.src}#t=${inicio}` };
+      }
+
+      return video; // Google Drive não aceita início programado.
+    }
+
+    function htmlResultadosBase(itens, pergunta) {
+      const termos = termosDeBusca(pergunta);
+
+      return itens.map(item => {
+        const doc = item.documento;
+        const tipo = TIPOS_BASE[doc.tipo] || TIPOS_BASE.texto;
+        const url = linkSeguro(doc.fonte_url);
+        const trecho = item.trecho.length > 700
+          ? item.trecho.slice(0, 700) + "…"
+          : item.trecho;
+
+        const acaoVideo = doc.tipo === "video" && url && embedVideo(url)
+          ? `<button type="button"
+                     class="botao secundario"
+                     data-assistir="${esc(url)}"
+                     data-inicio="${esc(item.inicio_segundos ?? 0)}">
+               ▶ Assistir ${Number.isInteger(item.inicio_segundos)
+                 ? `a partir de ${esc(segundosParaTempo(item.inicio_segundos))}`
+                 : "o vídeo"}
+             </button>`
+          : "";
+
+        return `
+          <article class="historico base-item">
+            <h3>${tipo.icone} ${esc(doc.titulo)}</h3>
+            <p class="base-meta">
+              ${esc(tipo.nome)}${item.referencia ? ` · ${esc(item.referencia)}` : ""}
+              ${url && doc.tipo !== "video" ? `
+                · <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">
+                    Abrir documento
+                  </a>` : ""}
+            </p>
+            <p class="texto">${destacarTermos(trecho, termos)}</p>
+            ${acaoVideo}
+          </article>`;
+      }).join("");
+    }
+
+    // Carrega o player no ponto exato do vídeo ao clicar em "Assistir".
+    document.addEventListener("click", evento => {
+      const botao = evento.target.closest("[data-assistir]");
+      if (!botao) return;
+
+      const video = urlVideoNoMomento(botao.dataset.assistir, botao.dataset.inicio);
+      if (!video) return;
+
+      const player = video.tipo === "video"
+        ? `<video src="${esc(video.src)}" controls autoplay></video>`
+        : `<iframe src="${esc(video.src)}"
+                   title="Vídeo da base de conhecimento"
+                   allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                   allowfullscreen
+                   referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+
+      const caixa = document.createElement("div");
+      caixa.className = "midia";
+      caixa.innerHTML = `<div class="video-box">${player}</div>`;
+      botao.replaceWith(caixa);
+    });
+
+    // ---------- Página: Base de conhecimento (suporte) ----------
+    async function renderBase(numeroCarregamento) {
+      let pendentes = [];
+
+      conteudo.innerHTML = `
+        <h1>Base de conhecimento</h1>
+
+        <div class="aviso">
+          Os arquivos são lidos neste navegador: apenas o texto extraído
+          é salvo no Supabase. Só documentos <strong>publicados</strong>
+          aparecem na busca automática antes da abertura do chamado.
+          Não importe documentos com dados de pacientes ou dados pessoais.
+        </div>
+
+        <div id="aviso-base"></div>
+
+        <div class="card">
+          <h2>📂 Importar documentos</h2>
+          <p class="muted">
+            PDF, Word (.docx), PowerPoint (.pptx) ou texto (.txt).
+            Pode selecionar vários de uma vez. Arquivos .doc e .ppt antigos
+            precisam ser salvos antes como .docx ou .pptx.
+          </p>
+
+          <div class="campo">
+            <label for="base-arquivos">Arquivos</label>
+            <input id="base-arquivos" type="file" multiple
+                   accept=".pdf,.docx,.pptx,.txt,.md,.doc,.ppt">
+          </div>
+
+          <button id="base-ler" class="botao" type="button">
+            Ler arquivos
+          </button>
+          <p id="base-progresso" class="muted" aria-live="polite"></p>
+        </div>
+
+        <div class="card">
+          <h2>🎥 Adicionar vídeo</h2>
+          <p class="muted">
+            O vídeo continua no YouTube, Vimeo ou Google Drive. Para a busca
+            encontrar o conteúdo falado, envie a transcrição: legenda
+            .srt/.vtt ou o texto copiado de “Mostrar transcrição” do YouTube.
+            Com os tempos, a busca abre o vídeo no momento certo.
+          </p>
+
+          <div class="campo">
+            <label for="video-titulo">Título do vídeo *</label>
+            <input id="video-titulo" maxlength="300">
+          </div>
+
+          <div class="campo">
+            <label for="video-link">Link do vídeo *</label>
+            <input id="video-link" type="url"
+                   placeholder="https://www.youtube.com/watch?v=...">
+          </div>
+
+          <div class="campo">
+            <label for="video-legenda">Arquivo de legenda (opcional)</label>
+            <input id="video-legenda" type="file" accept=".srt,.vtt,.txt">
+          </div>
+
+          <div class="campo">
+            <label for="video-transcricao">Ou cole a transcrição</label>
+            <textarea id="video-transcricao"
+                      placeholder="0:00&#10;Olá, neste vídeo vamos ver...&#10;0:15&#10;Primeiro, confira o contracheque..."></textarea>
+          </div>
+
+          <button id="video-preparar" class="botao" type="button">
+            Preparar vídeo
+          </button>
+        </div>
+
+        <div id="base-pendentes"></div>
+
+        <div class="card">
+          <h2>📚 Documentos na base</h2>
+          <div id="base-lista"><p>Carregando...</p></div>
+        </div>`;
+
+      const progresso = document.getElementById("base-progresso");
+      const areaPendentes = document.getElementById("base-pendentes");
+
+      function desenharPendentes() {
+        if (!pendentes.length) {
+          areaPendentes.innerHTML = "";
+          return;
+        }
+
+        areaPendentes.innerHTML = `
+          <div class="card">
+            <h2>✅ Prontos para salvar (${pendentes.length})</h2>
+            <p class="muted">
+              Confira o título e a prévia. Marque “Publicar” para que
+              o conteúdo já apareça na busca.
+            </p>
+
+            ${pendentes.map((item, indice) => {
+              const tipo = TIPOS_BASE[item.tipo];
+
+              return `
+                <div class="base-pendente" data-indice="${indice}">
+                  <div class="base-pendente-topo">
+                    <strong>${tipo.icone} ${esc(tipo.nome)}</strong>
+                    <span class="muted">${item.trechos.length} trecho(s)</span>
+                    <button type="button" class="botao secundario"
+                            data-remover-pendente="${indice}">
+                      Remover
+                    </button>
+                  </div>
+
+                  <div class="calc-grade">
+                    <label>
+                      Título
+                      <input data-campo="titulo" value="${esc(item.titulo)}"
+                             maxlength="300">
+                    </label>
+
+                    <label>
+                      Link do documento (opcional)
+                      <input data-campo="fonte_url" type="url"
+                             value="${esc(item.fonte_url)}"
+                             ${item.tipo === "video" ? "readonly" : ""}
+                             placeholder="https://...">
+                    </label>
+                  </div>
+
+                  <label class="calc-check">
+                    <input data-campo="publicar" type="checkbox"
+                           ${item.publicar ? "checked" : ""}>
+                    Publicar agora
+                  </label>
+
+                  <details>
+                    <summary>Ver prévia dos trechos</summary>
+                    ${item.trechos.slice(0, 5).map(trecho => `
+                      <div class="historico">
+                        <small class="muted">${esc(trecho.referencia || "")}</small>
+                        <div class="texto">${esc(trecho.trecho.slice(0, 400))}${trecho.trecho.length > 400 ? "…" : ""}</div>
+                      </div>
+                    `).join("")}
+                    ${item.trechos.length > 5
+                      ? `<p class="muted">… e mais ${item.trechos.length - 5} trecho(s).</p>`
+                      : ""}
+                  </details>
+                </div>`;
+            }).join("")}
+
+            <div class="acoes">
+              <button id="base-salvar" class="botao" type="button">
+                Salvar na base
+              </button>
+            </div>
+          </div>`;
+      }
+
+      // Mantém as edições do formulário no array de pendentes.
+      areaPendentes.addEventListener("input", evento => {
+        const bloco = evento.target.closest("[data-indice]");
+        const campo = evento.target.dataset.campo;
+        if (!bloco || !campo) return;
+
+        const item = pendentes[Number(bloco.dataset.indice)];
+        item[campo] = evento.target.type === "checkbox"
+          ? evento.target.checked
+          : evento.target.value;
+      });
+
+      areaPendentes.addEventListener("click", async evento => {
+        const remover = evento.target.closest("[data-remover-pendente]");
+
+        if (remover) {
+          pendentes.splice(Number(remover.dataset.removerPendente), 1);
+          desenharPendentes();
+          return;
+        }
+
+        if (!evento.target.closest("#base-salvar")) return;
+
+        const botao = evento.target.closest("#base-salvar");
+
+        for (const item of pendentes) {
+          if (!item.titulo.trim()) {
+            mostrarAlerta("Todos os itens precisam de título.");
+            return;
+          }
+
+          if (item.fonte_url && !linkSeguro(item.fonte_url)) {
+            mostrarAlerta(`Link inválido em “${item.titulo}”.`);
+            return;
+          }
+        }
+
+        botao.disabled = true;
+        limparAlerta();
+
+        const falhas = [];
+        const totalSalvar = pendentes.length;
+        let salvos = 0;
+
+        for (const item of [...pendentes]) {
+          botao.textContent = `Salvando ${salvos + falhas.length + 1} de ${totalSalvar}...`;
+
+          try {
+            await salvarDocumentoBase(item);
+            salvos++;
+            pendentes = pendentes.filter(p => p !== item);
+          } catch (erro) {
+            console.error("Erro ao salvar na base:", erro);
+
+            if (erroTabelaBase(erro)) {
+              mostrarAlerta(
+                "As tabelas da base ainda não existem. Execute o arquivo " +
+                "SF360_base_conhecimento.sql no Supabase."
+              );
+              botao.disabled = false;
+              botao.textContent = "Salvar na base";
+              return;
+            }
+
+            falhas.push(item.titulo);
+          }
+        }
+
+        if (numeroCarregamento !== carregamentoAtual) return;
+
+        desenharPendentes();
+        await carregarLista();
+
+        if (falhas.length) {
+          mostrarAlerta(
+            `${salvos} salvo(s). Não foi possível salvar: ${falhas.join(", ")}.`
+          );
+        } else {
+          mostrarAlerta(`${salvos} item(ns) salvo(s) na base.`, "sucesso");
+        }
+      });
+
+      document.getElementById("base-ler").addEventListener("click", async evento => {
+        const arquivos = [...document.getElementById("base-arquivos").files];
+
+        if (!arquivos.length) {
+          mostrarAlerta("Selecione ao menos um arquivo.");
+          return;
+        }
+
+        const botao = evento.currentTarget;
+        botao.disabled = true;
+        limparAlerta();
+
+        const erros = [];
+
+        for (const [indice, arquivo] of arquivos.entries()) {
+          if (numeroCarregamento !== carregamentoAtual) return;
+
+          const etiqueta = `(${indice + 1}/${arquivos.length}) ${arquivo.name}`;
+          progresso.textContent = `Lendo ${etiqueta}...`;
+
+          try {
+            if (arquivo.size > 50 * 1024 * 1024) {
+              throw new Error("Arquivo maior que 50 MB.");
+            }
+
+            const item = await prepararArquivo(arquivo, etapa => {
+              progresso.textContent = `Lendo ${etiqueta}: ${etapa}...`;
+            });
+
+            pendentes.push(item);
+          } catch (erro) {
+            console.error("Erro ao ler arquivo:", erro);
+            erros.push(`${arquivo.name}: ${erro.message || "não foi possível ler."}`);
+          }
+        }
+
+        if (numeroCarregamento !== carregamentoAtual) return;
+
+        progresso.textContent = "";
+        botao.disabled = false;
+        document.getElementById("base-arquivos").value = "";
+        desenharPendentes();
+
+        if (erros.length) {
+          mostrarAlerta(erros.join(" · "));
+        } else {
+          mostrarAlerta("Arquivos lidos. Confira e salve na base.", "sucesso");
+        }
+      });
+
+      document.getElementById("video-preparar").addEventListener("click", async () => {
+        const titulo = document.getElementById("video-titulo").value.trim();
+        const link = document.getElementById("video-link").value.trim();
+        const arquivoLegenda = document.getElementById("video-legenda").files[0];
+        let transcricao = document.getElementById("video-transcricao").value;
+
+        if (!titulo || !link) {
+          mostrarAlerta("Informe o título e o link do vídeo.");
+          return;
+        }
+
+        if (!embedVideo(link)) {
+          mostrarAlerta(
+            "Link de vídeo não reconhecido. Use YouTube, Vimeo, " +
+            "Google Drive ou arquivo .mp4/.webm."
+          );
+          return;
+        }
+
+        if (arquivoLegenda) {
+          transcricao = `${await arquivoLegenda.text()}\n${transcricao}`;
+        }
+
+        // Sem transcrição, o título vira o único trecho pesquisável.
+        const unidades = extrairTranscricao(transcricao);
+        const trechos = montarTrechos(
+          unidades.length ? unidades : [{ texto: titulo, referencia: "", inicio: 0 }],
+          true
+        );
+
+        pendentes.push({
+          titulo,
+          tipo: "video",
+          fonte_url: link,
+          publicar: false,
+          trechos
+        });
+
+        document.getElementById("video-titulo").value = "";
+        document.getElementById("video-link").value = "";
+        document.getElementById("video-legenda").value = "";
+        document.getElementById("video-transcricao").value = "";
+
+        desenharPendentes();
+        mostrarAlerta(
+          unidades.length
+            ? "Vídeo preparado. Confira e salve na base."
+            : "Vídeo preparado sem transcrição: a busca usará só o título.",
+          unidades.length ? "sucesso" : "erro"
+        );
+      });
+
+      async function carregarLista() {
+        const lista = document.getElementById("base-lista");
+
+        const { data, error } = await cliente
+          .from("documentos_base")
+          .select("id, titulo, tipo, status, total_trechos, criado_em")
+          .order("criado_em", { ascending: false })
+          .limit(500);
+
+        if (numeroCarregamento !== carregamentoAtual) return;
+
+        if (erroTabelaBase(error)) {
+          baseDisponivel = false;
+          lista.innerHTML = "";
+          document.getElementById("aviso-base").innerHTML = `
+            <div class="aviso erro">
+              As tabelas da base de conhecimento ainda não existem.
+              Execute o arquivo <strong>SF360_base_conhecimento.sql</strong>
+              no SQL Editor do Supabase e recarregue a página.
+            </div>`;
+          return;
+        }
+
+        if (error) throw error;
+
+        baseDisponivel = true;
+        const itens = data || [];
+
+        lista.innerHTML = itens.length ? `
+          <div class="tabela">
+            <table>
+              <thead>
+                <tr>
+                  <th>Documento</th>
+                  <th>Trechos</th>
+                  <th>Status</th>
+                  <th>Importado em</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${itens.map(item => {
+                  const tipo = TIPOS_BASE[item.tipo] || TIPOS_BASE.texto;
+                  const publicado = item.status === "publicada";
+
+                  return `
+                    <tr>
+                      <td>${tipo.icone} ${esc(item.titulo)}</td>
+                      <td>${esc(item.total_trechos)}</td>
+                      <td>${publicado ? "Publicado" : "Pendente"}</td>
+                      <td>${esc(formatarData(item.criado_em))}</td>
+                      <td>
+                        <div class="acoes" style="margin:0">
+                          <button type="button" class="botao secundario"
+                                  data-base-status="${esc(item.id)}"
+                                  data-novo-status="${publicado ? "pendente" : "publicada"}">
+                            ${publicado ? "Despublicar" : "Publicar"}
+                          </button>
+                          <button type="button" class="botao secundario"
+                                  data-base-excluir="${esc(item.id)}"
+                                  data-titulo="${esc(item.titulo)}">
+                            Excluir
+                          </button>
+                        </div>
+                      </td>
+                    </tr>`;
+                }).join("")}
+              </tbody>
+            </table>
+          </div>`
+          : '<p class="muted">Nenhum documento importado ainda.</p>';
+      }
+
+      document.getElementById("base-lista").addEventListener("click", async evento => {
+        const botaoStatus = evento.target.closest("[data-base-status]");
+        const botaoExcluir = evento.target.closest("[data-base-excluir]");
+
+        if (!botaoStatus && !botaoExcluir) return;
+
+        const botao = botaoStatus || botaoExcluir;
+
+        if (
+          botaoExcluir &&
+          !window.confirm(`Excluir “${botaoExcluir.dataset.titulo}” e todos os seus trechos?`)
+        ) return;
+
+        botao.disabled = true;
+
+        try {
+          const consulta = botaoStatus
+            ? cliente.from("documentos_base")
+                .update({ status: botaoStatus.dataset.novoStatus })
+                .eq("id", botaoStatus.dataset.baseStatus)
+            : cliente.from("documentos_base")
+                .delete()
+                .eq("id", botaoExcluir.dataset.baseExcluir);
+
+          const { error } = await consulta;
+          if (error) throw error;
+
+          await carregarLista();
+          mostrarAlerta(
+            botaoStatus ? "Status atualizado." : "Documento excluído.",
+            "sucesso"
+          );
+        } catch (erro) {
+          console.error("Erro na base:", erro);
+          mostrarAlerta("Não foi possível concluir a ação.");
+          botao.disabled = false;
+        }
+      });
+
+      await carregarLista();
+    }
+
     async function pesquisarOrientacoes(pergunta) {
       const termos = termosDeBusca(pergunta);
 
       if (!termos.length) return [];
 
-      const { data, error } = await cliente
-        .from("orientacoes")
-        .select(
-          "id, pergunta, resposta, palavras_chave, " +
-          "fonte_nome, fonte_url, pagina"
-        )
-        .eq("status", "publicada");
+      const { data, error } = await selecionarOrientacoes(
+        "id, pergunta, resposta, palavras_chave, " +
+        "fonte_nome, fonte_url, pagina",
+        campos => cliente
+          .from("orientacoes")
+          .select(campos)
+          .eq("status", "publicada")
+      );
 
       if (error) throw error;
 
@@ -769,6 +3720,8 @@
           <article class="historico">
             <h3>${esc(item.pergunta)}</h3>
             <p class="texto">${esc(item.resposta)}</p>
+            ${htmlVideo(item.video_url)}
+            ${htmlSimulacao(lerSimulacao(item.simulacao))}
             <p>
               <small>
                 <strong>Fonte:</strong> ${esc(item.fonte_nome)}
@@ -833,14 +3786,43 @@
           limparAlerta();
 
           try {
-            const itens = await pesquisarOrientacoes(pergunta);
+            // Orientações e base de conhecimento em paralelo.
+            const [buscaOrientacoes, buscaBase] = await Promise.allSettled([
+              pesquisarOrientacoes(pergunta),
+              pesquisarBase(pergunta, 5)
+            ]);
+
+            if (buscaOrientacoes.status === "rejected") {
+              throw buscaOrientacoes.reason;
+            }
+
+            if (buscaBase.status === "rejected") {
+              console.error("Erro na base de conhecimento:", buscaBase.reason);
+            }
+
+            const itens = buscaOrientacoes.value;
+            const trechos = buscaBase.status === "fulfilled" ? buscaBase.value : [];
 
             if (numeroCarregamento !== carregamentoAtual) return;
 
             resultado.innerHTML = `
               <div class="card">
-                <h2>Orientações encontradas</h2>
-                ${exibirResultadosOrientacoes(itens)}
+                ${itens.length || !trechos.length ? `
+                  <h2>Orientações encontradas</h2>
+                  ${exibirResultadosOrientacoes(itens)}
+                ` : ""}
+
+                ${trechos.length ? `
+                  <h2 class="base-titulo">📚 Na base de conhecimento</h2>
+                  <p class="muted">
+                    Trechos de documentos e vídeos relacionados à sua dúvida.
+                  </p>
+                  ${htmlResultadosBase(trechos, pergunta)}
+                ` : ""}
+
+                ${perguntaSobreHoraExtra(pergunta)
+                  ? htmlCalculadoraHoraExtra()
+                  : ""}
 
                 <p class="muted">
                   Confira a fonte e sua atualização. Estas informações
@@ -853,6 +3835,9 @@
                   Não resolveu? Enviar ao suporte
                 </button>
               </div>`;
+
+            iniciarSimulacoes(resultado);
+            iniciarCalculadoras(resultado);
 
             document.getElementById("continuar-chamado")
               .addEventListener("click", async () => {
@@ -1059,6 +4044,13 @@
         </div>
 
         ${suporte ? `
+          <div id="sugestoes-chamado" class="card">
+            <h2>💡 Sugestões automáticas para este chamado</h2>
+            <p class="muted">Procurando na base de conhecimento...</p>
+          </div>
+        ` : ""}
+
+        ${suporte ? `
           <form id="form-status" class="card">
             <h2>Alterar status</h2>
 
@@ -1112,6 +4104,40 @@
                 data-ir="${suporte ? "fila" : "chamados"}">
           Voltar
         </button>`;
+
+      // Sugestões da base (carregam depois, sem atrasar a página).
+      const areaSugestoes = document.getElementById("sugestoes-chamado");
+
+      if (areaSugestoes) {
+        const textoChamado = `${chamado.assunto || ""} ${chamado.duvida || ""}`;
+
+        Promise.allSettled([
+          pesquisarOrientacoes(textoChamado),
+          pesquisarBase(textoChamado, 4)
+        ]).then(([orientacoes, trechos]) => {
+          if (numeroCarregamento !== carregamentoAtual || !areaSugestoes.isConnected) {
+            return;
+          }
+
+          const listaOrientacoes = orientacoes.status === "fulfilled"
+            ? orientacoes.value.slice(0, 3)
+            : [];
+          const listaTrechos = trechos.status === "fulfilled" ? trechos.value : [];
+
+          areaSugestoes.innerHTML = `
+            <h2>💡 Sugestões automáticas para este chamado</h2>
+            ${listaOrientacoes.length || listaTrechos.length ? `
+              <p class="muted">
+                Encontradas pelas palavras do assunto e da dúvida.
+                Confira antes de usar na resposta.
+              </p>
+              ${listaOrientacoes.length ? exibirResultadosOrientacoes(listaOrientacoes) : ""}
+              ${listaTrechos.length ? htmlResultadosBase(listaTrechos, textoChamado) : ""}
+            ` : '<p class="muted">Nada relacionado foi encontrado na base.</p>'}`;
+
+          iniciarSimulacoes(areaSugestoes);
+        });
+      }
 
       const formStatus = document.getElementById("form-status");
 
@@ -1278,6 +4304,8 @@
             <input id="nova-pagina" placeholder="Ex.: página 12">
           </div>
 
+          ${camposMidiaHtml("nova")}
+
           <button class="botao" type="submit">
             Salvar como pendente
           </button>
@@ -1285,6 +4313,8 @@
 
       const campoTexto = document.getElementById("texto-pdf");
       const progresso = document.getElementById("progresso-pdf");
+
+      ligarPreviaMidia("nova");
 
       document.getElementById("extrair-pdf").addEventListener(
         "click",
@@ -1434,22 +4464,42 @@
             return;
           }
 
-          const botao = evento.currentTarget.querySelector("button");
+          const midia = lerCamposMidia("nova");
+          if (!midia) return;
+
+          const botao = evento.currentTarget.querySelector(
+            'button[type="submit"]'
+          );
           botao.disabled = true;
           limparAlerta();
+
+          const registro = {
+            pergunta,
+            resposta,
+            palavras_chave: palavrasChave,
+            fonte_nome: fonteNome,
+            fonte_url: fonteUrl || null,
+            pagina: pagina || null,
+            status: "pendente"
+          };
+
+          // Só envia as colunas de mídia se houver conteúdo.
+          if (midia.video_url) registro.video_url = midia.video_url;
+          if (midia.simulacao) registro.simulacao = midia.simulacao;
 
           try {
             const { error } = await cliente
               .from("orientacoes")
-              .insert({
-                pergunta,
-                resposta,
-                palavras_chave: palavrasChave,
-                fonte_nome: fonteNome,
-                fonte_url: fonteUrl || null,
-                pagina: pagina || null,
-                status: "pendente"
-              });
+              .insert(registro);
+
+            if (erroColunaMidia(error)) {
+              mostrarAlerta(
+                "Vídeo/simulação não puderam ser salvos: as colunas " +
+                "video_url e simulacao não existem no Supabase. " +
+                "Execute o SQL de atualização."
+              );
+              return;
+            }
 
             if (error) throw error;
             if (numeroCarregamento !== carregamentoAtual) return;
@@ -1458,6 +4508,9 @@
             document.getElementById("nova-resposta").value = "";
             document.getElementById("novas-palavras").value = "";
             document.getElementById("nova-pagina").value = "";
+            document.getElementById("nova-video").value = "";
+            document.getElementById("nova-simulacao").value = "";
+            document.getElementById("nova-previa").innerHTML = "";
 
             mostrarAlerta(
               "Orientação salva como pendente. Revise antes de publicar.",
@@ -1553,14 +4606,15 @@
         return;
       }
 
-      const { data: item, error } = await cliente
-        .from("orientacoes")
-        .select(
-          "id, pergunta, resposta, palavras_chave, fonte_nome, " +
-          "fonte_url, pagina, status, revisado_em"
-        )
-        .eq("id", id)
-        .maybeSingle();
+      const { data: item, error } = await selecionarOrientacoes(
+        "id, pergunta, resposta, palavras_chave, fonte_nome, " +
+        "fonte_url, pagina, status, revisado_em",
+        campos => cliente
+          .from("orientacoes")
+          .select(campos)
+          .eq("id", id)
+          .maybeSingle()
+      );
 
       if (error) throw error;
       if (numeroCarregamento !== carregamentoAtual) return;
@@ -1610,6 +4664,8 @@
             <input id="editar-pagina" value="${esc(item.pagina)}">
           </div>
 
+          ${camposMidiaHtml("editar", item)}
+
           <div class="campo">
             <label for="editar-status">Status</label>
             <select id="editar-status">
@@ -1642,6 +4698,8 @@
           </div>
         </form>`;
 
+      ligarPreviaMidia("editar");
+
       document.getElementById("form-editar-orientacao").addEventListener(
         "submit",
         async evento => {
@@ -1670,6 +4728,25 @@
             return;
           }
 
+          const midia = lerCamposMidia("editar");
+          if (!midia) return;
+
+          const alteracoes = {
+            pergunta,
+            resposta,
+            palavras_chave: palavrasChave,
+            fonte_nome: fonteNome,
+            fonte_url: fonteUrl || null,
+            pagina: pagina || null,
+            status,
+            revisado_em: new Date().toISOString()
+          };
+
+          if (midiaDisponivel) {
+            alteracoes.video_url = midia.video_url;
+            alteracoes.simulacao = midia.simulacao;
+          }
+
           const botao = evento.currentTarget.querySelector(
             'button[type="submit"]'
           );
@@ -1680,16 +4757,7 @@
           try {
             const { data, error } = await cliente
               .from("orientacoes")
-              .update({
-                pergunta,
-                resposta,
-                palavras_chave: palavrasChave,
-                fonte_nome: fonteNome,
-                fonte_url: fonteUrl || null,
-                pagina: pagina || null,
-                status,
-                revisado_em: new Date().toISOString()
-              })
+              .update(alteracoes)
               .eq("id", item.id)
               .select("id")
               .maybeSingle();
@@ -1825,8 +4893,10 @@ const temasQualificacao = [
     nome: "Legislação trabalhista e jornada",
     termos: [
       "clt", "legislacao trabalhista", "direito trabalhista",
-      "jornada", "escala", "hora extra", "ferias",
-      "banco de horas", "folga"
+      "jornada", "escala", "hora extra", "horas extras", "ferias",
+      "banco de horas", "folga", "plantao", "12x36", "sobreaviso",
+      "intervalo", "ponto", "dsr", "repouso semanal", "feriado",
+      "carga horaria", "compensacao"
     ],
     plataformas: [
       { nome: "Escola Virtual Gov", url: "https://www.escolavirtual.gov.br/" }
@@ -1835,8 +4905,10 @@ const temasQualificacao = [
   {
     nome: "Piso salarial da enfermagem",
     termos: [
-      "piso salarial", "piso da enfermagem",
-      "piso enfermagem", "salario enfermagem"
+      "piso salarial", "piso da enfermagem", "piso enfermagem",
+      "salario enfermagem", "lei 14.434", "14434", "complementacao do piso",
+      "assistencia financeira", "tecnico de enfermagem",
+      "auxiliar de enfermagem", "parteira"
     ],
     plataformas: [
       { nome: "UNA-SUS", url: "https://www.unasus.gov.br/" },
@@ -1844,10 +4916,35 @@ const temasQualificacao = [
     ]
   },
   {
+    nome: "Remuneração e adicionais",
+    termos: [
+      "contracheque", "holerite", "folha de pagamento", "salario",
+      "desconto", "adicional noturno", "insalubridade", "periculosidade",
+      "gratificacao", "decimo terceiro", "13o salario", "vale transporte",
+      "auxilio alimentacao", "reajuste"
+    ],
+    plataformas: [
+      { nome: "Escola Virtual Gov", url: "https://www.escolavirtual.gov.br/" }
+    ]
+  },
+  {
+    nome: "Afastamentos, licenças e desligamento",
+    termos: [
+      "atestado", "licenca", "afastamento", "maternidade", "paternidade",
+      "inss", "auxilio doenca", "beneficio por incapacidade",
+      "rescisao", "aviso previo", "demissao", "desligamento", "fgts"
+    ],
+    plataformas: [
+      { nome: "Escola Virtual Gov", url: "https://www.escolavirtual.gov.br/" }
+    ]
+  },
+  {
     nome: "Gestão e atendimento",
     termos: [
       "atendimento", "comunicacao", "gestao",
-      "lideranca", "equipe", "conflito"
+      "lideranca", "equipe", "conflito", "assedio", "feedback",
+      "avaliacao de desempenho", "dimensionamento", "absenteismo",
+      "rotatividade", "humanizacao"
     ],
     plataformas: [
       { nome: "Escola Virtual Gov", url: "https://www.escolavirtual.gov.br/" }
@@ -1858,7 +4955,9 @@ const temasQualificacao = [
     termos: [
       "seguranca do trabalho", "saude do trabalhador",
       "acidente de trabalho", "epi", "ergonomia",
-      "risco ocupacional"
+      "risco ocupacional", "nr 32", "nr32", "perfurocortante",
+      "cat", "exame periodico", "aso", "vacinacao", "biosseguranca",
+      "burnout", "saude mental"
     ],
     plataformas: [
       { nome: "UNA-SUS", url: "https://www.unasus.gov.br/" },
@@ -1872,8 +4971,14 @@ function classificarTemas(chamado) {
     `${chamado.assunto || ""} ${chamado.duvida || ""}`
   );
 
+  // Compara palavras inteiras ("aso" não casa com "caso").
   return temasQualificacao.filter(tema =>
-    tema.termos.some(termo => texto.includes(normalizarBusca(termo)))
+    tema.termos.some(termo => {
+      const padrao = normalizarBusca(termo)
+        .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+      return new RegExp(`(^|[^a-z0-9])${padrao}([^a-z0-9]|$)`).test(texto);
+    })
   );
 }
 
